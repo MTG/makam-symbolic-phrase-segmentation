@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<deployment-project plugin="plugin.ezdeploy" plugin-version="1.0">
+  <configuration target="target.ezdeploy.standalone" target-name="MATLAB Compiler for Standalone Applications" name="phraseSeg" location="/home/sertansenturk/notaIcra/code/makam-symbolic-phrase-segmentation" file="/home/sertansenturk/notaIcra/code/makam-symbolic-phrase-segmentation/phraseSeg.prj" preferred-package-type="package.type.install" build-checksum="1663034057" preferred-package-location="/home/sertansenturk/notaIcra/code/makam-symbolic-phrase-segmentation/phraseSeg/for_redistribution">
+    <param.appname>phraseSeg</param.appname>
+    <param.authnamewatermark />
+    <param.email />
+    <param.company />
+    <param.icon />
+    <param.icons />
+    <param.summary />
+    <param.description />
+    <param.screenshot />
+    <param.version>1.0</param.version>
+    <param.namespace>phraseSeg</param.namespace>
+    <param.guid />
+    <param.installpath.string>/phraseSeg/</param.installpath.string>
+    <param.installpath.combo>option.installpath.user</param.installpath.combo>
+    <param.logo />
+    <param.install.notes>On the target computer, append the following to your LD_LIBRARY_PATH environment variable (Where {MCR_ROOT} is the directory the MCR has been installed into):&lt;br&gt; {MCR_ROOT}/runtime/glnxa64&lt;br&gt; {MCR_ROOT}/bin/glnxa64&lt;br&gt; {MCR_ROOT}/sys/os/glnxa64&lt;br&gt; {MCR_ROOT}/sys/java/jre/glnxa64/jre/lib/amd64/native_threads&lt;br&gt; {MCR_ROOT}/sys/java/jre/glnxa64/jre/lib/amd64/server&lt;br&gt; {MCR_ROOT}/sys/java/jre/glnxa64/jre/lib/amd64&lt;br&gt; &lt;br&gt; Next, set the XAPPLRESDIR environment variable to the following value:&lt;br&gt;{MCR_ROOT}/X11/app-defaults&lt;br&gt;</param.install.notes>
+    <param.intermediate>${PROJECT_ROOT}/phraseSeg/for_testing</param.intermediate>
+    <param.output>${PROJECT_ROOT}/phraseSeg/for_redistribution</param.output>
+    <param.embed.ctf>true</param.embed.ctf>
+    <param.target.type>subtarget.standalone</param.target.type>
+    <param.classorg />
+    <param.web.mcr>true</param.web.mcr>
+    <param.package.mcr>false</param.package.mcr>
+    <param.no.mcr>false</param.no.mcr>
+    <param.web.mcr.name>MyAppInstaller_web</param.web.mcr.name>
+    <param.package.mcr.name>MyAppInstaller_mcr</param.package.mcr.name>
+    <param.no.mcr.name>MyAppInstaller_app</param.no.mcr.name>
+    <param.user.defined.mcr.options />
+    <param.windows.command.prompt>true</param.windows.command.prompt>
+    <param.user.only.registration>false</param.user.only.registration>
+    <param.mads.no.java>false</param.mads.no.java>
+    <param.mads.exclusive.mcr>false</param.mads.exclusive.mcr>
+    <param.net.framework>option.net.framework.default</param.net.framework>
+    <param.assembly.type>false</param.assembly.type>
+    <param.encryption.key.file />
+    <param.net.enable.remoting>false</param.net.enable.remoting>
+    <param.net.tsa.enable>false</param.net.tsa.enable>
+    <param.net.tsa.assembly />
+    <param.net.tsa.interface />
+    <param.net.tsa.namespace>phraseSeg</param.net.tsa.namespace>
+    <param.net.tsa.superclass />
+    <param.net.tsa.metadata />
+    <param.net.tsa.metadata.assembly>/home/sertansenturk</param.net.tsa.metadata.assembly>
+    <param.create.log>false</param.create.log>
+    <param.log.file />
+    <unset>
+      <param.authnamewatermark />
+      <param.email />
+      <param.company />
+      <param.icon />
+      <param.icons />
+      <param.summary />
+      <param.description />
+      <param.screenshot />
+      <param.version />
+      <param.namespace />
+      <param.guid />
+      <param.installpath.string />
+      <param.logo />
+      <param.install.notes />
+      <param.intermediate />
+      <param.output />
+      <param.embed.ctf />
+      <param.target.type />
+      <param.classorg />
+      <param.web.mcr />
+      <param.package.mcr />
+      <param.no.mcr />
+      <param.web.mcr.name />
+      <param.package.mcr.name />
+      <param.no.mcr.name />
+      <param.user.defined.mcr.options />
+      <param.windows.command.prompt />
+      <param.user.only.registration />
+      <param.mads.no.java />
+      <param.mads.exclusive.mcr />
+      <param.net.framework />
+      <param.assembly.type />
+      <param.encryption.key.file />
+      <param.net.enable.remoting />
+      <param.net.tsa.enable />
+      <param.net.tsa.assembly />
+      <param.net.tsa.interface />
+      <param.net.tsa.namespace />
+      <param.net.tsa.superclass />
+      <param.net.tsa.metadata />
+      <param.net.tsa.metadata.assembly />
+      <param.create.log />
+      <param.log.file />
+    </unset>
+    <fileset.main>
+      <file>${PROJECT_ROOT}/phraseSeg.m</file>
+    </fileset.main>
+    <fileset.resources>
+      <file>${PROJECT_ROOT}/files/noteTable.txt</file>
+      <file>${PROJECT_ROOT}/files/usuller.txt</file>
+      <file>${PROJECT_ROOT}/functions/ComputeROC.m</file>
+      <file>${PROJECT_ROOT}/functions/ResampleROC.m</file>
+      <file>${PROJECT_ROOT}/functions/SetThresholdF.m</file>
+      <file>${PROJECT_ROOT}/functions/applyFLDmodel.m</file>
+      <file>${PROJECT_ROOT}/functions/autoMelodicSegmentation.m</file>
+      <file>${PROJECT_ROOT}/functions/boundaryFeatures.m</file>
+      <file>${PROJECT_ROOT}/functions/createListOfMakamsUsuls.m</file>
+      <file>${PROJECT_ROOT}/functions/evaluate.m</file>
+      <file>${PROJECT_ROOT}/functions/external/GetFullPath/GetFullPath.m</file>
+      <file>${PROJECT_ROOT}/functions/external/GetFullPath/Readme.txt</file>
+      <file>${PROJECT_ROOT}/functions/external/GetFullPath/license.txt</file>
+      <file>${PROJECT_ROOT}/functions/external/miditoolbox/License.txt</file>
+      <file>${PROJECT_ROOT}/functions/external/miditoolbox/about.html</file>
+      <file>${PROJECT_ROOT}/functions/external/miditoolbox/boundary_tr.m</file>
+      <file>${PROJECT_ROOT}/functions/external/miditoolbox/dur.m</file>
+      <file>${PROJECT_ROOT}/functions/external/miditoolbox/onset.m</file>
+      <file>${PROJECT_ROOT}/functions/external/miditoolbox/pitch.m</file>
+      <file>${PROJECT_ROOT}/functions/external/miditoolbox/segmentgestalt_tr.m</file>
+      <file>${PROJECT_ROOT}/functions/extractFeature.m</file>
+      <file>${PROJECT_ROOT}/functions/extractSegments.m</file>
+      <file>${PROJECT_ROOT}/functions/filterNoteMatrix.m</file>
+      <file>${PROJECT_ROOT}/functions/filterSegmentation.m</file>
+      <file>${PROJECT_ROOT}/functions/findTime_mertebe.m</file>
+      <file>${PROJECT_ROOT}/functions/generateFLDmodel.m</file>
+      <file>${PROJECT_ROOT}/functions/learnBoundStat.m</file>
+      <file>${PROJECT_ROOT}/functions/loadPieceData.m</file>
+      <file>${PROJECT_ROOT}/functions/loadPieceDataInFolder.m</file>
+      <file>${PROJECT_ROOT}/functions/rankdata.m</file>
+      <file>${PROJECT_ROOT}/functions/segment.m</file>
+      <file>${PROJECT_ROOT}/functions/symbtr2nmat.m</file>
+      <file>${PROJECT_ROOT}/functions/test.m</file>
+      <file>${PROJECT_ROOT}/functions/train.m</file>
+      <file>${PROJECT_ROOT}/functions/trainMelodicSegmentation.m</file>
+      <file>${PROJECT_ROOT}/sampleData/test/hicaz--sarki--aksak--ben_gamli_hazan--melahat_pars.txt</file>
+      <file>${PROJECT_ROOT}/sampleData/test/hicaz--sarki--aksak--beni_canimdan--muzaffer_ilkar.txt</file>
+      <file>${PROJECT_ROOT}/sampleData/test/hicaz--sarki--aksak--beni_sev--udi_ibrahim_efendi.txt</file>
+      <file>${PROJECT_ROOT}/sampleData/test/hicaz--sarki--aksak--bilmiyorum--sevki_bey.txt</file>
+      <file>${PROJECT_ROOT}/sampleData/test/hicaz--sarki--aksak--bir_an--omer_sami_gupgup.txt</file>
+      <file>${PROJECT_ROOT}/sampleData/test/hicaz--sarki--aksak--bir_bahar--selahattin_pinar.txt</file>
+      <file>${PROJECT_ROOT}/sampleData/test/hicaz--sarki--aksak--dil_yaresini--sevki_bey.txt</file>
+      <file>${PROJECT_ROOT}/sampleData/train/hicaz--agirsemai--agirsenginsemai--guller_kizarir--ibrahim_aga.txt</file>
+      <file>${PROJECT_ROOT}/sampleData/train/hicaz--beste--agircenber--dusmesin_miskin--zaharya.txt</file>
+      <file>${PROJECT_ROOT}/sampleData/train/hicaz--beste--agirduyek--ey_cesm-i--dede_efendi.txt</file>
+      <file>${PROJECT_ROOT}/sampleData/train/hicaz--beste--lenkfahte--baktikca_husn_u--suphi_ezgi.txt</file>
+      <file>${PROJECT_ROOT}/sampleData/train/hicaz--kalenderi--aksak--ebrulerinin_zahmi--.txt</file>
+      <file>${PROJECT_ROOT}/sampleData/train/hicaz--kocekce--aksak--baharin_zamani--dede_efendi.txt</file>
+      <file>${PROJECT_ROOT}/sampleData/train/hicaz--mandra--devrituran--hicaz_mandra--lavtaci_andon.txt</file>
+      <file>${PROJECT_ROOT}/sampleData/train/hicaz--pesrev--fahte----neyzen_salim_bey.txt</file>
+      <file>${PROJECT_ROOT}/sampleData/train/hicaz--sarki--agir_aksaksemai--hasret_odu--tanburi_ali_efendi.txt</file>
+      <file>${PROJECT_ROOT}/sampleData/train/hicaz--sarki--agiraksak--bir_nigah_et--sekerci_cemil_bey.txt</file>
+      <file>${PROJECT_ROOT}/sampleData/train/hicaz--sarki--agiraksak--derdimi_ummana--serif_icli.txt</file>
+      <file>${PROJECT_ROOT}/sampleData/train/hicaz--sarki--agiraksak--seni_sevda_cicegim--misirli_ibrahim.txt</file>
+      <file>${PROJECT_ROOT}/sampleData/train/hicaz--sarki--agiraksak--var_mi_sen_gibi--yorgaki.txt</file>
+      <file>${PROJECT_ROOT}/sampleData/train/hicaz--sarki--agirevfer--bak_ne_hale--haci_arif_bey.txt</file>
+      <file>${PROJECT_ROOT}/sampleData/train/hicaz--sarki--aksak--ben_gamli_hazan--melahat_pars.txt</file>
+      <file>${PROJECT_ROOT}/sampleData/train/hicaz--sarki--aksak--beni_sev--udi_ibrahim_efendi.txt</file>
+      <file>${PROJECT_ROOT}/sampleData/train/hicaz--sarki--aksak--bilmiyorum--sevki_bey.txt</file>
+      <file>${PROJECT_ROOT}/sampleData/train/hicaz--sarki--aksak--bir_bahar--selahattin_pinar.txt</file>
+      <file>${PROJECT_ROOT}/sampleData/train/hicaz--sarki--aksak--dil_yaresini--sevki_bey.txt</file>
+      <file>${PROJECT_ROOT}/sampleData/train/hicaz--sarki--aksak--gulsen-i_husnune--rifat_bey.txt</file>
+      <file>${PROJECT_ROOT}/sampleData/train/hicaz--sarki--aksak--hastayim_yasiyorum--hirant_kenkiloglu.txt</file>
+      <file>${PROJECT_ROOT}/sampleData/train/hicaz--sarki--aksak--kis_geldi--sevki_bey.txt</file>
+      <file>${PROJECT_ROOT}/sampleData/train/hicaz--sarki--aksak--sazlar_calinir--yesari_asim_arsoy.txt</file>
+      <file>${PROJECT_ROOT}/sampleData/train/hicaz--sarki--aksak--su_karsiki_dagda--dede_efendi.txt</file>
+    </fileset.resources>
+    <fileset.package />
+    <build-deliverables>
+      <file name="phraseSeg" location="${PROJECT_ROOT}/phraseSeg/for_testing" optional="false">/home/sertansenturk/notaIcra/code/makam-symbolic-phrase-segmentation/phraseSeg/for_testing/phraseSeg</file>
+      <file name="run_phraseSeg.sh" location="${PROJECT_ROOT}/phraseSeg/for_testing" optional="false">/home/sertansenturk/notaIcra/code/makam-symbolic-phrase-segmentation/phraseSeg/for_testing/run_phraseSeg.sh</file>
+      <file name="readme.txt" location="${PROJECT_ROOT}/phraseSeg/for_testing" optional="true">/home/sertansenturk/notaIcra/code/makam-symbolic-phrase-segmentation/phraseSeg/for_testing/readme.txt</file>
+    </build-deliverables>
+    <workflow />
+    <matlab>
+      <root>/usr/local/MATLAB/R2013b</root>
+      <toolboxes />
+    </matlab>
+    <platform>
+      <unix>true</unix>
+      <mac>false</mac>
+      <windows>false</windows>
+      <win2k>false</win2k>
+      <winxp>false</winxp>
+      <vista>false</vista>
+      <linux>true</linux>
+      <solaris>false</solaris>
+      <osver>3.13.0-40-generic</osver>
+      <os32>false</os32>
+      <os64>true</os64>
+      <arch>glnxa64</arch>
+      <matlab>true</matlab>
+    </platform>
+  </configuration>
+</deployment-project>
+
