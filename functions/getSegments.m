@@ -1,11 +1,29 @@
-function [segFiles, segments] = extractSegments(in,usulFile,out)
-% EXTRACTSEGMENT extracts the segment boundaries given in the score
-% Inputs:
-%   in: .ptxt feature file associated with a SymbTr file or a folder
-%       containing multiple .ptxt files
-%   usulFile: the file containing usul information
-%   out: the .seg file associated with a SymbTr file or a folder where
-%       .seg files will be saved for multiple SymbTr scores
+function [segFiles, segments] = getSegments(in,usulFile,out)
+% EXTRACTSEGMENT gets the segment boundaries given in the score
+%   The function returns the segments given in a SymbTr score. The segments
+%   are represented as the rows with code (2nd column) "53." By default the
+%   output is written to a file in the same directory with the same name of
+%   the SymbTr-score and an extension of ".seg". The user can overwrite the
+%   file path if the input is a single file or the folder path if the input
+%   is a folder. 
+%   Note: this step is not in part of automatic phrase segmentation but it
+%   is useful to compare against the automatic segmentations saved as
+%   .autoSeg
+%
+%   Inputs:
+%       in:       .ptxt feature file associated with a SymbTr file or a
+%                 folder containing multiple .ptxt files
+%       usulFile: the file containing usul information
+%       out (optional): the .seg file associated with a SymbTr file or a
+%                 folder where .seg files will be saved for multiple SymbTr
+%                 scores
+%   Outputs: 
+%       segFiles: The files where segments are saved   
+%       segments: The segments
+%
+%   Sertan Senturk, 2 December 2012
+%   Universitat Pompeu Fabra
+%   email: sertan.senturk@upf.edu 
 %% I/O
 if ~exist('out', 'var')
     out = '';

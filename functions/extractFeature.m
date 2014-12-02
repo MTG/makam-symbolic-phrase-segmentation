@@ -3,10 +3,10 @@ function [feature_files, feature] = extractFeature(in, boundStat, ...
 %EXTRACTFEATURE Extracts the features from the scores 
 %   The function extracts the features from the SymbTr-txt scores for
 %   phrase segmentation. It can accept a single SymbTr-score or a folder
-%   with multiple scores. By default the output is written written to a
-%   file in the same directory with the same name of the SymbTr-score and
-%   an an extension of ".ptxt". The user can overwrite the file path if
-%   the input is a single file or the folder path if the input is a folder.
+%   with multiple scores. By default the output is written to a file in the
+%   same directory with the same name of the SymbTr-score and an extension 
+%   of ".ptxt". The user can overwrite the file path if the input is a 
+%   single file or the folder path if the input is a folder.
 %   Inputs:
 %       in: The path of a single SymbTr-txt score or a directory 
 %           containing multiple SymbTr-scores
@@ -18,6 +18,9 @@ function [feature_files, feature] = extractFeature(in, boundStat, ...
 %       out (optional): The path for the saved feature file (if "in" is a
 %           single file) or the path of the directory to save the saved
 %           feature files (if "in" is a directory)
+%   Outputs:
+%       feature_files: The paths for the saved feature files
+%       feature: the extracted features
 %
 %   Sertan Senturk, 2 December 2012
 %   Universitat Pompeu Fabra

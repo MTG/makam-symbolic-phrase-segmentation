@@ -1,11 +1,29 @@
 function [bound_files, bound] = segment(in, FLDmodel, out)
 % SEGMENT segments the score according to the training model. 
-% Inputs:
-%   in: .ptxt feature file associated with a SymbTr file or a folder
-%       containing multiple .ptxt files
-%   FLDmodel: the segmentation model (or the file which the model is saved)
-%   out: the .autoSeg file associated with a SymbTr file or a folder where
-%       .autoSeg files will be saved for multiple SymbTr scores
+%   The function reads the feature files (files with .ptxt by defauls) 
+%   extracted from the score and automatically returns the estimated 
+%   segment boundaries for each SymbTr-score according to the model trained
+%   on the manual segmentations in the training scores. By default the 
+%   output is written to a file in the same directory with the same name 
+%   of the SymbTr-score and an extension of ".autoSeg". The user can 
+%   overwrite the file path if the input is a single file or the folder 
+%   path if the input is a folder.
+%   Inputs:
+%       in: .ptxt feature file associated with a SymbTr file or a folder
+%           containing multiple .ptxt files
+%       FLDmodel: the segmentation model (or the file which the model is
+%           saved)
+%       out (optional): the .autoSeg file associated with a SymbTr file or 
+%           a folder where .autoSeg files will be saved for multiple SymbTr
+%           scores
+%   Outputs:
+%       bound_files: the paths of the files where the automatic
+%           segmentation boundaries are stored
+%       bound: the segmentation boundaries
+%
+%   Sertan Senturk, 2 December 2012
+%   Universitat Pompeu Fabra
+%   email: sertan.senturk@upf.edu 
 %% I/O
 if exist(FLDmodel, 'file')
     FLDmodel = load(FLDmodel);

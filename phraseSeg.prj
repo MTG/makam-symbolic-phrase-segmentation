@@ -116,7 +116,7 @@
       <file>${PROJECT_ROOT}/functions/external/miditoolbox/pitch.m</file>
       <file>${PROJECT_ROOT}/functions/external/miditoolbox/segmentgestalt_tr.m</file>
       <file>${PROJECT_ROOT}/functions/extractFeature.m</file>
-      <file>${PROJECT_ROOT}/functions/extractSegments.m</file>
+      <file>${PROJECT_ROOT}/functions/getSegments.m</file>
       <file>${PROJECT_ROOT}/functions/filterNoteMatrix.m</file>
       <file>${PROJECT_ROOT}/functions/filterSegmentation.m</file>
       <file>${PROJECT_ROOT}/functions/findTime_mertebe.m</file>

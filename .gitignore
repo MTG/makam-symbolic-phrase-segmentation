@@ -1,0 +1,8 @@
+# segmentation files
+*.seg
+*.ptxt
+*.mat
+*.autoSeg
+
+# autosave
+*.*~

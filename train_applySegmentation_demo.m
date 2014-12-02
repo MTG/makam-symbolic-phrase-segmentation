@@ -1,9 +1,10 @@
-%train_applySegmentation  {no inputs}
-%Bu fonksiyon bir klasorde(trainDbaFolder) toplanmis verilerden ogrenme gerceklestirir ve
-%diger klasordeki(targetDbaFolder) verilere uygular.
-%This function performs training of the automatic segmentation from a dba
-%in a directory(trainDbaFolder) and then applies automatic segmentation on files in another
-%directory (targetDbaFolder)
+%train_applySegmentation {no inputs}
+% Bu fonksiyon bir klasorde(trainDbaFolder) toplanmis verilerden ogrenme 
+% gerceklestirir ve diger klasordeki(targetDbaFolder) verilere uygular.
+%
+% This function performs training of the automatic segmentation from a dba
+% in a directory(trainDbaFolder) and then applies automatic segmentation on
+% files in another directory (targetDbaFolder)
 
 %--------------------------------
 %% get the path of the script as a reference point to function calls, I/O..
@@ -35,7 +36,7 @@ evaluationFile = fullfile(trainDbaFolder,'results.mat');
 % extract the segment boundaries in the training data and save to .seg
 % files
 disp('- Extracting segment boundaries from SymbTr...')
-manualSegFiles=phraseSeg('extractSegments',trainDbaFolder,outTrainFolder);
+manualSegFiles=phraseSeg('getSegments',trainDbaFolder,outTrainFolder);
 
 %% Ezgi siniri dagilimlarini hesapla / compute melodic boundary histograms
 disp('- Learning boundary stats...')
@@ -83,5 +84,6 @@ disp('- Automatic segmentation on the test scores...')
 test_bound_files = phraseSeg('segment', outTestFolder, FLDmodelFile, ...
     outTestFolder);
 
-%% completed
+%% tamamlandi
+% completed
 disp('- Phrase segmentation complete!')

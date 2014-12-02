@@ -1,11 +1,15 @@
 function test()
-% %% Tests the phrase segmentation algorithm
-% This function checks whether the implemented algorithms for automatic
-% phrase segmentation works. It calls "learnBoundStat, extractFeature,
-% train, segment, evaluate" sequentially on a training dataset to learn the
-% model and then calls "extractFeature" and "segment" on the test dataset
-% to automatically segment the scores into phrases. If all the steps
-% are completed successfully, the function prints "Test passed"
+% TEST Tests the phrase segmentation algorithm
+%   This function checks whether the implemented algorithms for automatic
+%   phrase segmentation works. It calls "learnBoundStat, extractFeature,
+%   train, segment, evaluate" sequentially on a training dataset to learn
+%   the model and then calls "extractFeature" and "segment" on the test 
+%   dataset to automatically segment the scores into phrases. If all the
+%   steps are completed successfully, the function prints "Test passed"
+%
+%   Sertan Senturk, 2 December 2012
+%   Universitat Pompeu Fabra
+%   email: sertan.senturk@upf.edu 
 clc
 disp('------------ Testing the Phrase Segmentation Implementation ------------')
 
@@ -27,7 +31,7 @@ disp('- Extracting segment boundaries from SymbTr...')
 disp('  (Note: this step is not in part of automatic phrase segmentation')
 disp('   but useful to compare against the automatic segmentations saved as')
 disp('   ".autoSeg".)')
-manualSegFiles = phraseSeg('extractSegments', trainFolder, tmpTrainFolder);
+manualSegFiles = phraseSeg('getSegments', trainFolder, tmpTrainFolder);
 
 %% get the boundary statistics
 disp('- Learning boundary stats...')

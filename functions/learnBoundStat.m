@@ -1,9 +1,24 @@
 function [outFile, boundStat] = learnBoundStat(folderName, ...
     noteTableFile, usulFile, outFile)
-% 'folderName' isimli klasorde bulunan verilerden ezgi sinirlarinin
-% dagilimlarini hesaplar. ("birini disarida birak" yontemi koddan cikarildi)
-% This function computes the melodic boundary distributions from the data
-% in 'folderName'
+% LEARNBOUNDSTAT Learn boundary statistics from manual phrase segmentations
+%   This function computes the melodic boundary distributions from the data
+%   in 'folderName' ('folderName' isimli klasorde bulunan verilerden ezgi
+%   sinirlarinin dagilimlarini hesaplar.)
+%   Inputs:
+%       folderName: The path to the folder with the SymbTr-scores with
+%                   manual segmentations. 
+%       usulFile:   The dictionary file storing relevant information about
+%                   the usuls
+%       outFile (optional): The path of the mat file to save the boundary 
+%                   distributions (default: "(folderName)/boundStat.mat")
+%  Outputs:
+%       outFile:    The path of the mat file to save the boundary 
+%                   distributions (default: "(folderName)/boundStat.mat")
+%       boundStat:  A struct with boundary distibution information
+%
+%  Sertan Senturk, 2 December 2012
+%  Universitat Pompeu Fabra
+%  email: sertan.senturk@upf.edu 
 
 %% I/O
 if ~exist('noteTableFile', 'var') || (isempty(noteTableFile))
@@ -18,8 +33,8 @@ else
     if ~exist(fileparts(outFile), 'dir') % make sure the folder exist
         status = mkdir(fileparts(outFile));
         if ~status
-            error('learnBoundStat:outFile', ['The folder to save the stats '...
-                'cannot be created. Check the write permisions.'])
+            error('learnBoundStat:outFile', ['The folder to save the '...
+                'stats cannot be created. Check the write permisions.'])
         end
     end
 end

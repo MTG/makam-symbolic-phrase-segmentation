@@ -3,10 +3,20 @@ function [outFile, results] = evaluate(trainFolder, outFile, plotROC)
 %   This function evaluates the results obtained from the automatic phrase
 %   segmentation on the file level and also the dataset level using leave-
 %   one-out cross validation. 
+%   Inputs:
+%       trainFolder: the path to the directory with the scores used for 
+%                    training
+%       outFile (optional): the path to save the evaluation results 
+%                    (Default: (trainFolder)/results.mat)
+%       plotRoc: boolean to plot the region of convergence or not
+%   Outputs:
+%       outFile: the path where evaluation results is saved
+%       results: the evaluation results
 %
 %   Sertan Senturk, 2 December 2012
 %   Universitat Pompeu Fabra
 %   email: sertan.senturk@upf.edu 
+
 if ~exist('plotRes', 'var')
     plotROC = false;
 end

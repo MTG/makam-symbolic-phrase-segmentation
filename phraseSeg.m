@@ -1,13 +1,40 @@
 function varargout = phraseSeg(varargin)
-% HELP GOES HERE
-
+% PHRASESEG Automatic phrase segmentation on scores of Ottoman-Turkish
+% makam music
+%   This function 
+%
+% Test run ........................ test
+%       Inputs: none
+%       Outputs: none
+% Get manual segments in SymbTr: .. getSegments (scoreFolder/scoreFile) [outFolder/outFile]
+%       Inputs:
+%       Outputs:
+% Learn boundary statistics ....... learnBoundStat noteTableFile [outFile
+%       Inputs:
+%       Outputs:
+% Feature Extraction............... extractFeature (scoreFolder/scoreFile) boundStat_file [outFolder/outFile]
+%       Inputs:
+%       Outputs:
+% Training ........................ train trainingFolder [outFolder]
+%       Inputs:
+%       Outputs:
+% Segmentation .................... segment (testFolder/testFile) FLDmodel_file [outFolder/outFile]
+%       Inputs:
+%       Outputs:
+% Evaluation ...................... evaluate [evaluateFolder/evaluateFile] [plotROC]
+%       Inputs:
+%       Outputs:
+%    
+%   Sertan Senturk, 2 December 2012
+%   Universitat Pompeu Fabra
+%   email: sertan.senturk@upf.edu 
 inputErr = false;
 
-% I/O
+%% I/O
 p = fileparts(mfilename('fullpath'));
 
-% dictionary files. We also check the path in MATLAB since we might be
-% doing local testing
+% dictionary files. We check the path structure in MATLAB and the binary 
+% compiled by MATLAB runtime compiler
 usulFile_src={fullfile(p,'files','usuller.txt'), ... % path in MATLAB
     fullfile(p,'..','files','usuller.txt')}; % path in MCR
 noteTableFile_src={fullfile(p,'files','noteTable.txt'), ... % path in MATLAB
@@ -16,14 +43,14 @@ usulFile = usulFile_src{cellfun(@(x) ~isempty(dir(x)), usulFile_src)};
 noteTableFile = noteTableFile_src{cellfun(@(x) ~isempty(dir(x)), ...
     noteTableFile_src)};
 
-% run the
+%% run the specified function
 switch varargin{1}
     case 'test'
         if nargin > 1; inputErr = true; else test(); end
-    case 'extractSegments'
+    case 'getSegments' % extract segments in a SymbTrFile
         switch nargin
             case {2, 3}
-                [file, varargout{2}] = extractSegments(varargin{2},...
+                [file, varargout{2}] = getSegments(varargin{2},...
                     usulFile, varargin{3});
             otherwise
                 inputErr = true;
@@ -75,19 +102,20 @@ switch varargin{1}
         inputErr = true;
 end
 
-% wrong inputs given
+%% error handling
 if inputErr
     errstr = ['Wrong inputs! Usage: \n' ...
-        'Test run: ................... "test" \n'...
-        'Learn boundary statistics ... "learnBoundStat noteTableFile, usulFile [outFile]" \n'...
-        'Feature Extraction........... "extractFeature (scoreFolder/scoreFile) boundStat_file [outFolder/outFile]" \n'...
-        'Training: ................... "train trainingFolder [outFolder]" \n'...
-        'Segmentation: ............... "segment (testFolder/testFile) FLDmodel_file [outFolder/outFile]" \n'...
-        'Evaluation .................. "evaluate [evaluateFolder/evaluateFile] [plotROC] "'];
+        'Test run ........................ "test" \n'...
+        'Get manual segments in SymbTr: .. "getSegments (scoreFolder/scoreFile) [outFolder/outFile]" \n'...
+        'Learn boundary statistics ....... "learnBoundStat noteTableFile [outFile]" \n'...
+        'Feature Extraction............... "extractFeature (scoreFolder/scoreFile) boundStat_file [outFolder/outFile]" \n'...
+        'Training ........................ "train trainingFolder [outFolder]" \n'...
+        'Segmentation .................... "segment (testFolder/testFile) FLDmodel_file [outFolder/outFile]" \n'...
+        'Evaluation ...................... "evaluate [evaluateFolder/evaluateFile] [plotROC] "'];
     error('makamSymPhraseSeg:input', errstr)
 end
 
-% outputs
+%% outputs
 if ~strcmp(varargin{1}, 'test')
     if iscell(file) % multiple files were processed
         varargout{1} = char(GetFullPath(file(:)));
