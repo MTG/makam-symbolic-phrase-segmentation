@@ -48,7 +48,7 @@ function varargout = phraseSeg(varargin)
 %           feature: the extracted features
 %
 % train ........................... Training
-%       Inputs: 
+%       Additional Inputs: 
 %           trainingFeatureFolder:  the path to the folder where the
 %               features (.ptxt files by default) extracted from the
 %               training scores are stored
@@ -60,7 +60,7 @@ function varargout = phraseSeg(varargin)
 %           FLDmodel: the trained model
 %
 % segment ......................... Segmentation
-%       Inputs:
+%       Additional Inputs:
 %           {testFile/testFolder}: .ptxt feature file associated with a 
 %               SymbTr file or a folder containing multiple .ptxt files
 %           FLDmodel: the segmentation model or the file path where the
@@ -75,7 +75,7 @@ function varargout = phraseSeg(varargin)
 %           autoSegBound: the segmentation boundaries
 %
 % evaluate ........................ Evaluation
-%       Inputs:
+%       Additional Inputs:
 %           trainFeatureFolder: the path to the directory with the score 
 %               feature files extracted from the scores used for training
 %           evalResFile (optional): the path to save the evaluation results 
@@ -85,16 +85,22 @@ function varargout = phraseSeg(varargin)
 %           evalResFile: the path where evaluation results is saved
 %           results: the evaluation results
 %
-% There are also some additional functions:
+% Additional calls:
+% help ............................ Show help
+%       Displays the help text
+%       Additional Inputs: 
+%           - none -
+%       Outputs: 
+%           - none (displays the help text)
 % test ............................ Test run 
 %       It can be used to check whether the wrapper works without any
 %       problems.
-%       Inputs: 
+%       Additional Inputs: 
 %           - none -
 %       Outputs: 
-%           - none (will display success message on completion) -
+%           - none (will display success message on completion)
 % getSegments ..................... Get manual segments in SymbTr
-%       Inputs:
+%       Additional Inputs:
 %           {scoreFile/scoreFolder}: .ptxt feature file associated with a
 %           	SymbTr file or a folder containing multiple .ptxt files
 %           {segFile/segFolder} (optional): the path to save the .seg file
@@ -119,14 +125,19 @@ usulFile_src={fullfile(p,'files','usuller.txt'), ... % path in MATLAB
     fullfile(p,'..','files','usuller.txt')}; % path in MCR
 noteTableFile_src={fullfile(p,'files','noteTable.txt'), ... % path in MATLAB
     fullfile(p,'..','files','noteTable.txt')}; % path in MCR
+helpFile_src={fullfile(p,'files','help.txt'), ... % path in MATLAB
+    fullfile(p,'..','files','help.txt')}; % path in MCR
 usulFile = usulFile_src{cellfun(@(x) ~isempty(dir(x)), usulFile_src)};
 noteTableFile = noteTableFile_src{cellfun(@(x) ~isempty(dir(x)), ...
     noteTableFile_src)};
+helpFile = helpFile_src{cellfun(@(x) ~isempty(dir(x)), helpFile_src)};
 
 %% run the specified function
 switch varargin{1}
     case 'test'
         if nargin > 1; inputErr = true; else test(); end
+    case 'help'
+        if nargin > 1; inputErr = true; else type(helpFile); end
     case 'getSegments' % extract segments in a SymbTrFile
         switch nargin
             case {2, 3}
@@ -199,7 +210,7 @@ if inputErr
 end
 
 %% outputs
-if ~strcmp(varargin{1}, 'test')
+if ~any(strcmp(varargin{1}, {'test', 'help'}))
     if iscell(file) % multiple files were processed
         varargout{1} = char(GetFullPath(file(:)));
     else
