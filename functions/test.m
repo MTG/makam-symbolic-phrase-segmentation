@@ -28,7 +28,7 @@ evaluationFile = fullfile(tmpFolder,'results.mat');
 
 %% extract the segment boundaries
 disp('- Extracting segment boundaries from SymbTr...')
-disp('  (Note: this step is not in part of automatic phrase segmentation')
+disp('   (Note: this step is not in part of automatic phrase segmentation')
 disp('   but useful to compare against the automatic segmentations saved as')
 disp('   ".autoSeg".)')
 manualSegFiles = phraseSeg('getSegments', trainFolder, tmpTrainFolder);

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <deployment-project plugin="plugin.ezdeploy" plugin-version="1.0">
-  <configuration target="target.ezdeploy.standalone" target-name="MATLAB Compiler for Standalone Applications" name="phraseSeg" location="/home/sertansenturk/notaIcra/code/makam-symbolic-phrase-segmentation" file="/home/sertansenturk/notaIcra/code/makam-symbolic-phrase-segmentation/phraseSeg.prj" preferred-package-type="package.type.install" build-checksum="1663034057" preferred-package-location="/home/sertansenturk/notaIcra/code/makam-symbolic-phrase-segmentation/phraseSeg/for_redistribution">
+  <configuration target="target.ezdeploy.standalone" target-name="MATLAB Compiler for Standalone Applications" name="phraseSeg" location="/home/sertansenturk/notaIcra/code/makam-symbolic-phrase-segmentation" file="/home/sertansenturk/notaIcra/code/makam-symbolic-phrase-segmentation/phraseSeg.prj" preferred-package-type="package.type.install" build-checksum="3734568379" preferred-package-location="/home/sertansenturk/notaIcra/code/makam-symbolic-phrase-segmentation/phraseSeg/for_redistribution">
     <param.appname>phraseSeg</param.appname>
     <param.authnamewatermark />
     <param.email />
@@ -116,11 +116,11 @@
       <file>${PROJECT_ROOT}/functions/external/miditoolbox/pitch.m</file>
       <file>${PROJECT_ROOT}/functions/external/miditoolbox/segmentgestalt_tr.m</file>
       <file>${PROJECT_ROOT}/functions/extractFeature.m</file>
-      <file>${PROJECT_ROOT}/functions/getSegments.m</file>
       <file>${PROJECT_ROOT}/functions/filterNoteMatrix.m</file>
       <file>${PROJECT_ROOT}/functions/filterSegmentation.m</file>
       <file>${PROJECT_ROOT}/functions/findTime_mertebe.m</file>
       <file>${PROJECT_ROOT}/functions/generateFLDmodel.m</file>
+      <file>${PROJECT_ROOT}/functions/getSegments.m</file>
       <file>${PROJECT_ROOT}/functions/learnBoundStat.m</file>
       <file>${PROJECT_ROOT}/functions/loadPieceData.m</file>
       <file>${PROJECT_ROOT}/functions/loadPieceDataInFolder.m</file>

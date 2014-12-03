@@ -16,33 +16,74 @@ function varargout = phraseSeg(varargin)
 %
 %       run_mcr.sh phraseSeg segment testFolder FLDmodelFile outFolder
 %
+%   You can refer to the script train_applySegmentation_demo.m to call each
+%   function step-by-step.
+%
+% Function calls:
 % learnBoundStat .................. Learn boundary statistics 
-%       Inputs: 
-%           noteTableFile
-%           [outFile]
-%       Outputs:
+%       Inputs:
+%           trainingFolder: The path to the folder with the SymbTr-scores
+%           	with manual segmentations. 
+%           [boundStatFile] (optional): The path of the mat file to save
+%           	the boundary distributions (default: "(folderName)/boundStat.mat")
+%  Outputs:
+%           boundStatFile: The path of the mat file to save the boundary 
+%           	distributions (default: "(folderName)/boundStat.mat")
+%           boundStat: A struct with boundary distibution information
+%
 % extractFeature .................. Feature Extraction
-%       Inputs: 
-%           (scoreFolder/scoreFile)
-%           boundStatFile
-%           [outFolder/outFile]
+%       Inputs:
+%           {scoreFile/scoreFolder}: The path of a single SymbTr-txt score
+%           	or a directory containing multiple SymbTr-scores
+%           boundStat: The phrase boundary distributions on the training
+%               dataset computed by learnBoundStat. It can be given as a
+%               struct or as the path to a .mat file where the boundary
+%               distribution was saved by running "learnBoundStat".
+%           [featureFile/featureFolder] (optional): The path for the saved
+%               feature  file (if a "scoreFile" is given as the input) or
+%               the path of the directory to save the saved feature files
+%               (if "scoreFolder" is given as the input)
 %       Outputs:
+%           featureFiles: The path(s) for the saved feature files
+%           feature: the extracted features
+%
 % train ........................... Training
 %       Inputs: 
-%           trainingFolder
-%           [outFolder]
-%       Outputs:
+%           trainingFeatureFolder:  the path to the folder where the
+%               features (.ptxt files by default) extracted from the
+%               training scores are stored
+%           [modelFile] (optional): the path to the folder where the model
+%               will be stored (default: "(trainingFeatureFolder)/FLDmodel.mat")
+%       Output:
+%           modelFile: the path to the folder where the model will be
+%               stored (default: "(trainingFeatureFolder)/FLDmodel.mat")
+%           FLDmodel: the trained model
+%
 % segment ......................... Segmentation
 %       Inputs:
-%           (testFolder/testFile)
-%           FLDmodelFile
-%           [outFolder/outFile]
+%           {testFile/testFolder}: .ptxt feature file associated with a 
+%               SymbTr file or a folder containing multiple .ptxt files
+%           FLDmodel: the segmentation model or the file path where the
+%               model is saved
+%           [autoSegFile/autoSegFolder] (optional): the path to save the 
+%               .autoSeg file with the automatic segmentations (if the 
+%               input is a "scoreFile") or the path to a folder where the
+%               .autoSeg files will be saved for multiple SymbTr scores
 %       Outputs:
+%           autoSegFiles: the paths of the files where the automatic
+%               segmentation boundaries are stored
+%           autoSegBound: the segmentation boundaries
+%
 % evaluate ........................ Evaluation
 %       Inputs:
-%           [evaluateFolder/evaluateFile]
-%           [plotROC]
+%           trainFeatureFolder: the path to the directory with the score 
+%               feature files extracted from the scores used for training
+%           evalResFile (optional): the path to save the evaluation results 
+%               (Default: "(trainFeatureFolder)/results.mat")
+%           plotRoc (optional): boolean to plot the region of convergence
 %       Outputs:
+%           evalResFile: the path where evaluation results is saved
+%           results: the evaluation results
 %
 % There are also some additional functions:
 % test ............................ Test run 
@@ -53,10 +94,16 @@ function varargout = phraseSeg(varargin)
 %       Outputs: 
 %           - none (will display success message on completion) -
 % getSegments ..................... Get manual segments in SymbTr
-%       Inputs: 
-%           (scoreFolder/scoreFile)
-%           [outFolder/outFile]
-%       Outputs:
+%       Inputs:
+%           {scoreFile/scoreFolder}: .ptxt feature file associated with a
+%           	SymbTr file or a folder containing multiple .ptxt files
+%           {segFile/segFolder} (optional): the path to save the .seg file
+%               with the segment boundaries (if a "scoreFile" is given as
+%               the input) or the path to a folder where the .seg files 
+%               will be saved for multiple SymbTr scores
+%   Outputs: 
+%       segFiles: The files where segment boundaries are saved   
+%       segments: The segment boundaries
 %  
 %   Sertan Senturk, 2 December 2012
 %   Universitat Pompeu Fabra
@@ -139,12 +186,15 @@ end
 if inputErr
     errstr = ['Wrong inputs! Usage: \n' ...
         'Test run ........................ "test" \n'...
-        'Get manual segments in SymbTr ... "getSegments (scoreFolder/scoreFile) [outFolder/outFile]" \n'...
-        'Learn boundary statistics ....... "learnBoundStat noteTableFile [outFile]" \n'...
-        'Feature Extraction............... "extractFeature (scoreFolder/scoreFile) boundStatFile [outFolder/outFile]" \n'...
-        'Training ........................ "train trainingFolder [outFolder]" \n'...
-        'Segmentation .................... "segment (testFolder/testFile) FLDmodelFile [outFolder/outFile]" \n'...
-        'Evaluation ...................... "evaluate [evaluateFolder/evaluateFile] [plotROC] "'];
+        'Get manual segments in SymbTr ... "getSegments {scoreFile/scoreFolder} {segFile/segFolder}" \n'...
+        'Learn boundary statistics ....... "learnBoundStat trainingFolder [boundStatFile]" \n'...
+        'Feature Extraction............... "extractFeature {scoreFile/scoreFolder} boundStatFile [featureFile/featureFolder]" \n'...
+        'Training ........................ "train trainingFeatureFolder [modelFile]" \n'...
+        'Segmentation .................... "segment {testFile/testFolder} FLDmodelFile [autoSegFile/autoSegFolder]" \n'...
+        'Evaluation ...................... "evaluate trainFeatureFolder [evalResFile] [plotROC] "\n'...
+        '* Variables enclosed in "[]" are optional \n'...
+        '* Select either of the variables enclosed in "{/}" \n'...
+        '* Refer to the documentation for more details \n'];
     error('makamSymPhraseSeg:input', errstr)
 end
 

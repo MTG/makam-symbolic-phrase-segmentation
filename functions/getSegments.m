@@ -11,12 +11,12 @@ function [segFiles, segments] = getSegments(in,usulFile,out)
 %   .autoSeg
 %
 %   Inputs:
-%       in:       .ptxt feature file associated with a SymbTr file or a
-%                 folder containing multiple .ptxt files
+%       in: .ptxt feature file associated with a SymbTr file or a folder 
+%       	containing multiple .ptxt files
 %       usulFile: the file containing usul information
 %       out (optional): the .seg file associated with a SymbTr file or a
-%                 folder where .seg files will be saved for multiple SymbTr
-%                 scores
+%           folder where .seg files will be saved for multiple SymbTr
+%       	scores
 %   Outputs: 
 %       segFiles: The files where segments are saved   
 %       segments: The segments
