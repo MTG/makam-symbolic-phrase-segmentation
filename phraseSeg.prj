@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <deployment-project plugin="plugin.ezdeploy" plugin-version="1.0">
-  <configuration target="target.ezdeploy.standalone" target-name="MATLAB Compiler for Standalone Applications" name="phraseSeg" location="/home/sertansenturk/notaIcra/code/makam-symbolic-phrase-segmentation" file="/home/sertansenturk/notaIcra/code/makam-symbolic-phrase-segmentation/phraseSeg.prj" preferred-package-type="package.type.install" build-checksum="2798763642" preferred-package-location="/home/sertansenturk/notaIcra/code/makam-symbolic-phrase-segmentation/phraseSeg/for_redistribution">
+  <configuration target="target.ezdeploy.standalone" target-name="MATLAB Compiler for Standalone Applications" name="phraseSeg" location="/home/sertansenturk/notaIcra/code/makam-symbolic-phrase-segmentation" file="/home/sertansenturk/notaIcra/code/makam-symbolic-phrase-segmentation/phraseSeg.prj" preferred-package-type="package.type.install" build-checksum="3235319487" preferred-package-location="/home/sertansenturk/notaIcra/code/makam-symbolic-phrase-segmentation/phraseSeg/for_redistribution">
     <param.appname>phraseSeg</param.appname>
     <param.authnamewatermark />
     <param.email />
@@ -95,7 +95,6 @@
       <file>${PROJECT_ROOT}/phraseSeg.m</file>
     </fileset.main>
     <fileset.resources>
-      <file>${PROJECT_ROOT}/files/help.txt</file>
       <file>${PROJECT_ROOT}/files/noteTable.txt</file>
       <file>${PROJECT_ROOT}/files/usuller.txt</file>
       <file>${PROJECT_ROOT}/functions/ComputeROC.m</file>
@@ -131,6 +130,8 @@
       <file>${PROJECT_ROOT}/functions/test.m</file>
       <file>${PROJECT_ROOT}/functions/train.m</file>
       <file>${PROJECT_ROOT}/functions/trainMelodicSegmentation.m</file>
+      <file>${PROJECT_ROOT}/functions/trainSegment.m</file>
+      <file>${PROJECT_ROOT}/help.txt</file>
       <file>${PROJECT_ROOT}/sampleData/test/hicaz--sarki--aksak--ben_gamli_hazan--melahat_pars.txt</file>
       <file>${PROJECT_ROOT}/sampleData/test/hicaz--sarki--aksak--beni_canimdan--muzaffer_ilkar.txt</file>
       <file>${PROJECT_ROOT}/sampleData/test/hicaz--sarki--aksak--beni_sev--udi_ibrahim_efendi.txt</file>
