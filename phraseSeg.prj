@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <deployment-project plugin="plugin.ezdeploy" plugin-version="1.0">
-  <configuration target="target.ezdeploy.standalone" target-name="MATLAB Compiler for Standalone Applications" name="phraseSeg" location="/home/sertansenturk/notaIcra/code/makam-symbolic-phrase-segmentation" file="/home/sertansenturk/notaIcra/code/makam-symbolic-phrase-segmentation/phraseSeg.prj" preferred-package-type="package.type.install" build-checksum="3235319487" preferred-package-location="/home/sertansenturk/notaIcra/code/makam-symbolic-phrase-segmentation/phraseSeg/for_redistribution">
+  <configuration target="target.ezdeploy.standalone" target-name="MATLAB Compiler for Standalone Applications" name="phraseSeg" location="/home/sertansenturk/notaIcra/code/makam-symbolic-phrase-segmentation" file="/home/sertansenturk/notaIcra/code/makam-symbolic-phrase-segmentation/phraseSeg.prj" preferred-package-type="package.type.install" build-checksum="137896891" preferred-package-location="/home/sertansenturk/notaIcra/code/makam-symbolic-phrase-segmentation/phraseSeg/for_redistribution">
     <param.appname>phraseSeg</param.appname>
     <param.authnamewatermark />
     <param.email />
@@ -123,7 +123,6 @@
       <file>${PROJECT_ROOT}/functions/getSegments.m</file>
       <file>${PROJECT_ROOT}/functions/learnBoundStat.m</file>
       <file>${PROJECT_ROOT}/functions/loadPieceData.m</file>
-      <file>${PROJECT_ROOT}/functions/loadPieceDataInFolder.m</file>
       <file>${PROJECT_ROOT}/functions/rankdata.m</file>
       <file>${PROJECT_ROOT}/functions/segment.m</file>
       <file>${PROJECT_ROOT}/functions/symbtr2nmat.m</file>

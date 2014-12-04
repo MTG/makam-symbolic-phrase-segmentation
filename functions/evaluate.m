@@ -37,7 +37,7 @@ else
 end
 
 % loading the piece data:
-[pieceData,~,fileInds]=loadPieceDataInFolder(trainFeatureFolder);
+[pieceData,fileInds]=loadPieceDataInFolder(trainFeatureFolder);
 
 % leave-one-out  cross validation
 inList=unique(fileInds);
@@ -108,4 +108,50 @@ end
 
 % write to file
 save(outFile, '-struct', 'results')
+end
+
+function [piecedata,fileInds]=loadPieceDataInFolder(in)
+% loads the data related to the SymbTr scores in a folder
+if exist(in, 'dir')
+    feature_files = dir(fullfile(in, '*.ptxt'));
+    feature_files = fullfile(in, {feature_files.name});
+else
+    error('loadPieceDat:input', [in  'does not exist!'])
+end
+
+piecedata(numel(feature_files))=struct('filename','','data',[],'N',0);
+for k = 1:numel(feature_files)
+    piecedata(k) = loadPieceData(feature_files{k});
+end
+fileIdx_temp = num2cell(1:numel(feature_files));
+[piecedata.fileind]=fileIdx_temp{:};
+
+N=sum([piecedata(:).N]);
+fileInds=zeros(N,1);
+data=zeros(N,size(piecedata(1).data,2));
+bind=1;
+for i=1:length(piecedata)
+    eind=bind+size(piecedata(i).data,1)-1;
+    fileInds(bind:eind)=piecedata(i).fileind;
+    data(bind:eind,:)=piecedata(i).data;
+    bind=eind+1;
+end
+
+% first, eliminate the piece data containing NaN features ..
+FI=2:(size(data,2)-1);
+d=length(FI);
+outlist=[];
+for j=1:d
+    outlist=union(outlist,unique(fileInds(find(isnan(data(:,FI(j)))))));
+end
+if (length(outlist)>0)
+    IIN=find(sum(repmat(fileInds,1,length(outlist))-repmat(outlist',N,1)==0,2)==0);
+    NIIN=length(IIN);
+else
+    IIN=1:N;
+    NIIN=N;
+end
+
+data=data(IIN,:);
+fileInds=fileInds(IIN);
 end
