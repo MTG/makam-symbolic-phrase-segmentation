@@ -1,93 +1,72 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <deployment-project plugin="plugin.ezdeploy" plugin-version="1.0">
-  <configuration target="target.ezdeploy.standalone" target-name="MATLAB Compiler for Standalone Applications" name="phraseSeg" location="/home/sertansenturk/notaIcra/code/makam-symbolic-phrase-segmentation" file="/home/sertansenturk/notaIcra/code/makam-symbolic-phrase-segmentation/phraseSeg.prj" preferred-package-type="package.type.install" build-checksum="137896891" preferred-package-location="/home/sertansenturk/notaIcra/code/makam-symbolic-phrase-segmentation/phraseSeg/for_redistribution">
+  <configuration build-checksum="2549992714" file="/home/sertansenturk/Documents/notaIcra/code/makam-symbolic-phrase-segmentation/phraseSeg.prj" location="/home/sertansenturk/Documents/notaIcra/code/makam-symbolic-phrase-segmentation" name="phraseSeg" preferred-package-location="/home/sertansenturk/Documents/notaIcra/code/makam-symbolic-phrase-segmentation/phraseSeg/for_redistribution" preferred-package-type="package.type.install" target="target.ezdeploy.standalone" target-name="Application Compiler">
     <param.appname>phraseSeg</param.appname>
+    <param.icon />
+    <param.icons />
+    <param.version>1.0</param.version>
     <param.authnamewatermark />
     <param.email />
     <param.company />
-    <param.icon />
-    <param.icons />
     <param.summary />
     <param.description />
     <param.screenshot />
-    <param.version>1.0</param.version>
-    <param.namespace>phraseSeg</param.namespace>
     <param.guid />
+    <param.net.saved.interface />
     <param.installpath.string>/phraseSeg/</param.installpath.string>
     <param.installpath.combo>option.installpath.user</param.installpath.combo>
     <param.logo />
-    <param.install.notes>On the target computer, append the following to your LD_LIBRARY_PATH environment variable (Where {MCR_ROOT} is the directory the MCR has been installed into):&lt;br&gt; {MCR_ROOT}/runtime/glnxa64&lt;br&gt; {MCR_ROOT}/bin/glnxa64&lt;br&gt; {MCR_ROOT}/sys/os/glnxa64&lt;br&gt; {MCR_ROOT}/sys/java/jre/glnxa64/jre/lib/amd64/native_threads&lt;br&gt; {MCR_ROOT}/sys/java/jre/glnxa64/jre/lib/amd64/server&lt;br&gt; {MCR_ROOT}/sys/java/jre/glnxa64/jre/lib/amd64&lt;br&gt; &lt;br&gt; Next, set the XAPPLRESDIR environment variable to the following value:&lt;br&gt;{MCR_ROOT}/X11/app-defaults&lt;br&gt;</param.install.notes>
+    <param.install.notes />
     <param.intermediate>${PROJECT_ROOT}/phraseSeg/for_testing</param.intermediate>
+    <param.files.only>${PROJECT_ROOT}/phraseSeg/for_redistribution_files_only</param.files.only>
     <param.output>${PROJECT_ROOT}/phraseSeg/for_redistribution</param.output>
+    <param.enable.clean.build>false</param.enable.clean.build>
+    <param.user.defined.mcr.options />
     <param.embed.ctf>true</param.embed.ctf>
     <param.target.type>subtarget.standalone</param.target.type>
-    <param.classorg />
+    <param.support.packages />
+    <param.required.mcr.products>
+      <item>35000</item>
+      <item>35010</item>
+      <item>35001</item>
+    </param.required.mcr.products>
     <param.web.mcr>true</param.web.mcr>
     <param.package.mcr>false</param.package.mcr>
     <param.no.mcr>false</param.no.mcr>
     <param.web.mcr.name>MyAppInstaller_web</param.web.mcr.name>
     <param.package.mcr.name>MyAppInstaller_mcr</param.package.mcr.name>
     <param.no.mcr.name>MyAppInstaller_app</param.no.mcr.name>
-    <param.user.defined.mcr.options />
-    <param.windows.command.prompt>true</param.windows.command.prompt>
-    <param.user.only.registration>false</param.user.only.registration>
-    <param.mads.no.java>false</param.mads.no.java>
-    <param.mads.exclusive.mcr>false</param.mads.exclusive.mcr>
-    <param.net.framework>option.net.framework.default</param.net.framework>
-    <param.assembly.type>false</param.assembly.type>
-    <param.encryption.key.file />
-    <param.net.enable.remoting>false</param.net.enable.remoting>
-    <param.net.tsa.enable>false</param.net.tsa.enable>
-    <param.net.tsa.assembly />
-    <param.net.tsa.interface />
-    <param.net.tsa.namespace>phraseSeg</param.net.tsa.namespace>
-    <param.net.tsa.superclass />
-    <param.net.tsa.metadata />
-    <param.net.tsa.metadata.assembly>/home/sertansenturk</param.net.tsa.metadata.assembly>
+    <param.windows.command.prompt>false</param.windows.command.prompt>
     <param.create.log>false</param.create.log>
     <param.log.file />
     <unset>
+      <param.icon />
+      <param.icons />
+      <param.version />
       <param.authnamewatermark />
       <param.email />
       <param.company />
-      <param.icon />
-      <param.icons />
       <param.summary />
       <param.description />
       <param.screenshot />
-      <param.version />
-      <param.namespace />
       <param.guid />
+      <param.net.saved.interface />
       <param.installpath.string />
       <param.logo />
-      <param.install.notes />
       <param.intermediate />
+      <param.files.only />
       <param.output />
+      <param.enable.clean.build />
+      <param.user.defined.mcr.options />
       <param.embed.ctf />
       <param.target.type />
-      <param.classorg />
+      <param.support.packages />
       <param.web.mcr />
       <param.package.mcr />
       <param.no.mcr />
       <param.web.mcr.name />
       <param.package.mcr.name />
       <param.no.mcr.name />
-      <param.user.defined.mcr.options />
       <param.windows.command.prompt />
-      <param.user.only.registration />
-      <param.mads.no.java />
-      <param.mads.exclusive.mcr />
-      <param.net.framework />
-      <param.assembly.type />
-      <param.encryption.key.file />
-      <param.net.enable.remoting />
-      <param.net.tsa.enable />
-      <param.net.tsa.assembly />
-      <param.net.tsa.interface />
-      <param.net.tsa.namespace />
-      <param.net.tsa.superclass />
-      <param.net.tsa.metadata />
-      <param.net.tsa.metadata.assembly />
       <param.create.log />
       <param.log.file />
     </unset>
@@ -165,13 +144,14 @@
     </fileset.resources>
     <fileset.package />
     <build-deliverables>
-      <file name="phraseSeg" location="${PROJECT_ROOT}/phraseSeg/for_testing" optional="false">/home/sertansenturk/notaIcra/code/makam-symbolic-phrase-segmentation/phraseSeg/for_testing/phraseSeg</file>
-      <file name="run_phraseSeg.sh" location="${PROJECT_ROOT}/phraseSeg/for_testing" optional="false">/home/sertansenturk/notaIcra/code/makam-symbolic-phrase-segmentation/phraseSeg/for_testing/run_phraseSeg.sh</file>
-      <file name="readme.txt" location="${PROJECT_ROOT}/phraseSeg/for_testing" optional="true">/home/sertansenturk/notaIcra/code/makam-symbolic-phrase-segmentation/phraseSeg/for_testing/readme.txt</file>
+      <file location="${PROJECT_ROOT}/phraseSeg/for_testing" name="splash.png" optional="false">/home/sertansenturk/Documents/notaIcra/code/makam-symbolic-phrase-segmentation/phraseSeg/for_testing/splash.png</file>
+      <file location="${PROJECT_ROOT}/phraseSeg/for_testing" name="run_phraseSeg.sh" optional="false">/home/sertansenturk/Documents/notaIcra/code/makam-symbolic-phrase-segmentation/phraseSeg/for_testing/run_phraseSeg.sh</file>
+      <file location="${PROJECT_ROOT}/phraseSeg/for_testing" name="phraseSeg" optional="false">/home/sertansenturk/Documents/notaIcra/code/makam-symbolic-phrase-segmentation/phraseSeg/for_testing/phraseSeg</file>
+      <file location="${PROJECT_ROOT}/phraseSeg/for_testing" name="readme.txt" optional="true">/home/sertansenturk/Documents/notaIcra/code/makam-symbolic-phrase-segmentation/phraseSeg/for_testing/readme.txt</file>
     </build-deliverables>
     <workflow />
     <matlab>
-      <root>/usr/local/MATLAB/R2013b</root>
+      <root>/usr/local/MATLAB/R2015a</root>
       <toolboxes />
     </matlab>
     <platform>
@@ -183,7 +163,7 @@
       <vista>false</vista>
       <linux>true</linux>
       <solaris>false</solaris>
-      <osver>3.13.0-40-generic</osver>
+      <osver>3.13.0-63-generic</osver>
       <os32>false</os32>
       <os64>true</os64>
       <arch>glnxa64</arch>
@@ -191,4 +171,3 @@
     </platform>
   </configuration>
 </deployment-project>
-
