@@ -38,7 +38,8 @@ for k = 1:numel(infiles)
     fid=fopen(segFiles{k},'w+t');
     for m=1:length(segments{k})%uzman bolut bilgisinin son sutuna islenmesi
         if strcmp('53',num2str(segments{k}(m).kod))
-            fprintf(fid,'%4.4f\r\n',segments{k}(m).beat);
+            fprintf(fid,'%4.4f\t%d\r\n',segments{k}(m).beat,...
+                segments{k}(m).noteIndex);
         else
             
         end

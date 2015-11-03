@@ -35,18 +35,17 @@ end
 
 %% segmentation
 bound = cell(numel(infiles),1);
+boundary_noteIdx = cell(numel(infiles),1);
 for k = 1:numel(infiles)
-    bound{k} = segmentFile(infiles{k}, FLDmodel);
-    dlmwrite(bound_files{k},bound{k},'delimiter','\t','precision',...
-        '%.4f');
+    [bound{k}, boundary_noteIdx{k}] = autoMelodicSegmentation(infiles{k},...
+        FLDmodel);
+    
+    fid=fopen(bound_files{k},'w+t');
+    for m=1:length(bound{k})
+        fprintf(fid,'%4.4f\t%d\r\n', bound{k}(m), boundary_noteIdx{k}(m));
+    end
+    [~] = fclose(fid);
 end
-end
-
-function boundary = segmentFile(file, FLDmodel)
-%SEGMENT Summary of this function goes here
-%   Perform automatic segmentation using the trained model
-boundary = autoMelodicSegmentation(file, FLDmodel);
-
 end
 
 function [infiles, outfiles] = parseIO(in, out)

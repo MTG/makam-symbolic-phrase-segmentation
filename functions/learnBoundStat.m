@@ -66,9 +66,9 @@ for k=1:length(filepaths)
     %reading note matrix and boundary information from file
     %NM carries the note events in the standard format of MidiToolbox,
     %'bolut' carries the melodic boundaries in beats and milisecs
-    [NM, segment] = symbtr2nmat(filepaths{k},usulFile);
+    [NM, segment, noteIndex] = symbtr2nmat(filepaths{k},usulFile);
     [segment]=filterSegmentation(segment);
-    [NM]=filterNoteMatrix(NM);
+    [NM, noteIndex]=filterNoteMatrix(NM, noteIndex);
     
     %finding makam and usul index / makam ve usul indeksini bul
     for makamInd=1:length(makamList)

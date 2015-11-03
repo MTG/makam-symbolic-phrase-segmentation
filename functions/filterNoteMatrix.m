@@ -1,8 +1,7 @@
-function [NM]=filterNoteMatrix(NM)
+function [NM, noteIndex]=filterNoteMatrix(NM, noteIndex)
+%0 uzunlugundaki satirlari siler/removes lines with zero length
 
-
-%0 uzunlugundaki satirlari siler/removes lines with zero lengthh
-zeroLenRows=find(NM(:,7)>0);
+zeroLenRows=NM(:,7)>0;
 NM=NM(zeroLenRows,:);
 %ayni beat'e konmus ardisik satirlardan ilkini siler
 %removes the first of two events that are at the same beat
@@ -24,4 +23,5 @@ else
     rows2beKept=[rows2beKept length(NM(:,1))];
 end
 NM=NM(rows2beKept,:);
+noteIndex=noteIndex(rows2beKept);
 end

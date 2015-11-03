@@ -5,7 +5,7 @@ newSegment=segment;
 % eserin basina cumle siniri konma 
 % adding a boundary at the first onset
 newSegment(1).kod=53;
-newSegment(1).beat=0;newSegment(1).ms=0;newSegment(1).aciklama={''};
+newSegment(1).beat=0;newSegment(1).ms=0;newSegment(1).comment={''};
 m=2;
 for k=1:length(segment)
     if(segment(k).kod==53 && ~isnan(segment(k).beat))

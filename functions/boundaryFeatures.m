@@ -7,18 +7,17 @@ function featureMatrix = boundaryFeatures(symbTrFile, makamHist, ...
 %is computed for each note in the symbTrFile file and the results are 
 %written to a ptxt
 
-[NM, segment] = symbtr2nmat(symbTrFile,usulFile);
+[NM, segment, noteIndex] = symbtr2nmat(symbTrFile,usulFile);
 
 if(length(NM)<7)
     warning('boundaryFeatures:NM',['Too few data in NM: ' symbTrFile]);
     featureMatrix = [];
     return;
 else
-    [NM]=filterNoteMatrix(NM);
+    [NM, noteIndex]=filterNoteMatrix(NM, noteIndex);
 end
 if(length(segment)>2)%eger bolut iceren bir dosya ise
     %check Nan bolut
-    NanVar=0;
     for k=1:length(segment)
         if(isnan(segment(k).beat))
             disp('------Bolut bilgisi Nan iceriyor------');
@@ -33,14 +32,14 @@ time=usulHist.timeMertebe(1);
 %suslarin uzunluguna gore sinir olma olasiligini belirlenmesi
 %offset to onset duration
 offset2onsetDur=NM(2:end,1)-(NM(1:end-1,1)+NM(1:end-1,2));
-NMind=find(offset2onsetDur<0);
+NMind=find(offset2onsetDur<0, 1);
 if ~isempty(NMind)%error check
     %disp(['Hata: nota suresi ile onseti toplayinca bir sonraki onsetten sonraya geliyor, NM index=' num2str(NMind(1))]);
     %disp(symbTrFile);
 end
 med=median(offset2onsetDur);%scaling the feature with the median value
 pauseFeat=[0; (offset2onsetDur-med)/med];
-ind=find(pauseFeat<0); pauseFeat(ind)=0;
+ind= pauseFeat<0; pauseFeat(ind)=0;
 pauseFeat(1:3)=0;%baslardaki suslarin sinir olarak tercih edilmesi gereksiz hata yaratacagi icin
 %------------------------------------------
 %Oznitelik/Feature - 2 (noteBoundProbEnd)
@@ -93,7 +92,7 @@ for k=1:length(NM)-1
 end
 deltaPitch=deltaPitch/max(deltaPitch);
 %tekrar eden notalarda sinir olma olasiligini yukselt, sinir olabiliyor
-ind=find(deltaPitch==0);deltaPitch(ind)=0.4;
+ind= deltaPitch==0;deltaPitch(ind)=0.4;
 %------------------------------------------
 %Oznitelik/Feature - [6 7] (boundBeatProbDur boundBeatProbOnset)
 %her nota icin suresi boyunca(baslangici haric) ve sonraki notanin baslangicina kadar(dahil) son nota
@@ -126,7 +125,7 @@ lbdm=lbdm/max(lbdm);
 [tenney_polansky] = segmentgestalt_tr(NM);%Tenney and Polansky
 tenPolArray=lbdm*0;
 for k=1:length(NM)
-    if(~isempty(find(tenney_polansky==NM(k,1))))
+    if(~isempty(find(tenney_polansky==NM(k,1), 1)))
         tenPolArray(k)=1;
     end
 end
@@ -163,5 +162,9 @@ else%Bolutlenmis dosya, son satira sinir notasi(ezginin ilk notasi) icin 1, olma
     end
     %ilk satir ve son satirda kendiliginden sinir var, onlari verilerden cikar
     featureMatrix=featureMatrix(2:end-1,:);
+    noteIndex = noteIndex(2:end-1);
 end
+
+% add the note indices to the features as the first colum
+featureMatrix = [noteIndex(:) featureMatrix];
 end

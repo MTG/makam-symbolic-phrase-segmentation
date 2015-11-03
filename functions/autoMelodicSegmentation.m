@@ -1,4 +1,5 @@
-function boundary = autoMelodicSegmentation(feature_filename, FLDmodel)
+function [boundary, boundary_noteIdx] = autoMelodicSegmentation(...
+    feature_filename, FLDmodel)
 %Performs automatic melodic segmentation using the FLDmodel
 % Inputs: 
 %   filename: the ptxt feature filename of the corresponding SymbTr file
@@ -8,7 +9,12 @@ function boundary = autoMelodicSegmentation(feature_filename, FLDmodel)
 
 piecedata=loadPieceData(feature_filename);
 
+% ignore the first column (note index)
+idx = piecedata.data(:, 1:2);
+piecedata.data = piecedata.data(:, 2:end);
+
 % applying the classifier model:
 Ypred=applyFLDmodel(piecedata,FLDmodel);
 
-boundary = [piecedata.data(Ypred,1)];
+boundary = idx(Ypred,2);
+boundary_noteIdx = idx(Ypred,1);

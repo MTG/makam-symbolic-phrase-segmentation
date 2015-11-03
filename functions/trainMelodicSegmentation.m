@@ -11,8 +11,11 @@ for k = 1:numel(feature_files)
     PIECEDATA(k).filename = feature_files{k};
     PIECEDATA(k).fileind=k;
     PIECEDATA(k).data=load(PIECEDATA(k).filename,'ascii');
+    % remove the first column (noteIndices)
+    PIECEDATA(k).data = PIECEDATA(k).data(:,2:end);
+    
     PIECEDATA(k).N=size(PIECEDATA(k).data,1);   
 end
 
 % generating the classifier model:
-FLDmodel=generateFLDmodel(PIECEDATA(2:end));
+FLDmodel=generateFLDmodel(PIECEDATA);
