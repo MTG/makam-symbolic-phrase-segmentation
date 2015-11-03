@@ -10,8 +10,6 @@ function test()
 %   Sertan Senturk, 2 December 2012
 %   Universitat Pompeu Fabra
 %   email: sertan.senturk@upf.edu 
-clc
-disp('------------ Testing the Phrase Segmentation Implementation ------------')
 
 %% I/O
 p = fileparts(mfilename('fullpath'));
@@ -19,55 +17,25 @@ trainFolder = fullfile(p, '..', 'sampleData', 'train');
 testFolder = fullfile(p, '..', 'sampleData', 'test');
 
 tmpFolder = fullfile(p, '..', 'tmp');
-tmpTrainFolder = fullfile(tmpFolder, 'train');
-tmpTestFolder = fullfile(tmpFolder, 'test');
+trainFeatureFolder = fullfile(tmpFolder, 'trainFeature');
+testFeatureFolder = fullfile(tmpFolder, 'testFeature');
+trainSegmentFolder = fullfile(tmpFolder, 'trainSegment');
+testSegmentFolder = fullfile(tmpFolder, 'testSegment');
 
 boundStatFile = fullfile(tmpFolder,'boundStat.mat');
 FLDmodelFile = fullfile(tmpFolder,'FLDmodel.mat');
 evaluationFile = fullfile(tmpFolder,'results.mat');
 
-%% extract the segment boundaries
-disp('- Extracting segment boundaries from SymbTr...')
-disp('  (Note: this step is not in part of automatic phrase segmentation')
-disp('   but useful to compare against the automatic segmentations saved as')
-disp('   ".autoSeg".)')
-manualSegFiles = phraseSeg('getSegments', trainFolder, tmpTrainFolder);
+%% call the complete process 
+[~] = phraseSeg('trainSegment', trainFolder, testFolder, ...
+    'trainFeatureFolder', trainFeatureFolder,...
+    'testFeatureFolder', testFeatureFolder,...
+    'trainSegmentFolder', trainSegmentFolder,...
+    'testSegmentFolder', testSegmentFolder,...
+    'boundStatFile', boundStatFile,...
+    'FLDmodelFile', FLDmodelFile,...
+    'evaluationFile', evaluationFile);
 
-%% get the boundary statistics
-disp('- Learning boundary stats...')
-boundStatFile = phraseSeg('learnBoundStat', trainFolder, boundStatFile);
-
-%% get the features for the symbTr files in the training set
-disp('- Computing the features for the training scores...')
-trainFeatureFiles = phraseSeg('extractFeature', trainFolder, ...
-    boundStatFile, tmpTrainFolder);
-
-%% train the model
-disp('- Training the model from manual segmentations in the training set...')
-FLDmodelFile = phraseSeg('train', tmpTrainFolder, FLDmodelFile);
-
-%% apply segmentation to the training set
-disp('- Automatic segmentation on the training scores...')
-trainBoundFiles = phraseSeg('segment', tmpTrainFolder, FLDmodelFile, ...
-    tmpTrainFolder);
-
-%% evalute on the training set
-disp('- Evaluating the automatic segmentations on the training scores...')
-[resultsFile, results] = phraseSeg('evaluate', tmpTrainFolder, ...
-    evaluationFile);
-fprintf('  ... The average ROC curve; AUC == %.4f\n',...
-    results.overall.roc.average)
-
-%% get the features for the symbTr files in the test set
-disp('- Computing the features for the test scores...')
-test_feature_files = phraseSeg('extractFeature', testFolder, ...
-    boundStatFile, tmpTestFolder);
-
-%% segment
-disp('- Automatic segmentation on the test scores...')
-test_bound_files = phraseSeg('segment', tmpTestFolder, FLDmodelFile, ...
-    tmpTestFolder);
-
-%% completed
-disp('- Test passed!')
+%% rm the temporary folder
 rmdir(tmpFolder, 's')
+end

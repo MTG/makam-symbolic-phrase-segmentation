@@ -5,8 +5,12 @@
 % This function performs training of the automatic segmentation from a dba
 % in a directory(trainDbaFolder) and then applies automatic segmentation on
 % files in another directory (targetDbaFolder)
-
 %--------------------------------
+%% start
+clear 
+close all
+clc
+
 %% get the path of the script as a reference point to function calls, I/O..
 addpath(genpath(fullfile('functions')))
 p = fileparts(mfilename('fullpath'));

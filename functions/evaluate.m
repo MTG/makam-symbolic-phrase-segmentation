@@ -1,13 +1,17 @@
-function [outFile, results] = evaluate(trainFolder, outFile, plotROC)
+function [outFile, results] = evaluate(trainFeatureFolder, outFile, plotROC)
 %EVALUATE Evaluates the results obtained by autmatic phrase segmentation
 %   This function evaluates the results obtained from the automatic phrase
 %   segmentation on the file level and also the dataset level using leave-
-%   one-out cross validation. 
+%   one-out cross validation (i.e. leaving a single training file for 
+%   testing, training the model on other files, segmenting the single file
+%   evaluating the automatic segmentation results on the single file, 
+%   repeating the above steps for each score file and averaging).
+%
 %   Inputs:
-%       trainFolder: the path to the directory with the scores used for 
-%                    training
+%       trainFolder: the path to the directory with the score feature files
+%                   extracted from the scores used for training
 %       outFile (optional): the path to save the evaluation results 
-%                    (Default: (trainFolder)/results.mat)
+%                   (Default: "(trainFeatureFolder)/results.mat")
 %       plotRoc: boolean to plot the region of convergence or not
 %   Outputs:
 %       outFile: the path where evaluation results is saved
@@ -21,7 +25,7 @@ if ~exist('plotRes', 'var')
     plotROC = false;
 end
 if ~exist('outFile', 'var') || isempty(outFile)
-    outFile =  fullfile(trainFolder, 'results.mat');
+    outFile =  fullfile(trainFeatureFolder, 'results.mat');
 else
     if ~exist(fileparts(outFile), 'dir') % make sure the folder exist
         status = mkdir(fileparts(outFile));
@@ -33,7 +37,7 @@ else
 end
 
 % loading the piece data:
-[pieceData,~,fileInds]=loadPieceDataInFolder(trainFolder);
+[pieceData,fileInds]=loadPieceDataInFolder(trainFeatureFolder);
 
 % leave-one-out  cross validation
 inList=unique(fileInds);
@@ -104,4 +108,50 @@ end
 
 % write to file
 save(outFile, '-struct', 'results')
+end
+
+function [piecedata,fileInds]=loadPieceDataInFolder(in)
+% loads the data related to the SymbTr scores in a folder
+if exist(in, 'dir')
+    feature_files = dir(fullfile(in, '*.ptxt'));
+    feature_files = fullfile(in, {feature_files.name});
+else
+    error('loadPieceDat:input', [in  'does not exist!'])
+end
+
+piecedata(numel(feature_files))=struct('filename','','data',[],'N',0);
+for k = 1:numel(feature_files)
+    piecedata(k) = loadPieceData(feature_files{k});
+end
+fileIdx_temp = num2cell(1:numel(feature_files));
+[piecedata.fileind]=fileIdx_temp{:};
+
+N=sum([piecedata(:).N]);
+fileInds=zeros(N,1);
+data=zeros(N,size(piecedata(1).data,2));
+bind=1;
+for i=1:length(piecedata)
+    eind=bind+size(piecedata(i).data,1)-1;
+    fileInds(bind:eind)=piecedata(i).fileind;
+    data(bind:eind,:)=piecedata(i).data;
+    bind=eind+1;
+end
+
+% first, eliminate the piece data containing NaN features ..
+FI=2:(size(data,2)-1);
+d=length(FI);
+outlist=[];
+for j=1:d
+    outlist=union(outlist,unique(fileInds(find(isnan(data(:,FI(j)))))));
+end
+if (length(outlist)>0)
+    IIN=find(sum(repmat(fileInds,1,length(outlist))-repmat(outlist',N,1)==0,2)==0);
+    NIIN=length(IIN);
+else
+    IIN=1:N;
+    NIIN=N;
+end
+
+data=data(IIN,:);
+fileInds=fileInds(IIN);
 end
