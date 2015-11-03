@@ -10,7 +10,7 @@ function varargout = phraseSeg(varargin)
 %   Example call:
 %       phraseSeg('segment', testFolder, FLDmodelFile, outFolder)
 %
-%   If you are call the standalone binary provided in the package from the
+%   If you want call the standalone binary provided in the package from the
 %   terminal, append the run_mcr.sh function and with the Command syntax
 %   (http://www.mathworks.com/help/matlab/ref/syntax.html)
 %
@@ -18,45 +18,88 @@ function varargout = phraseSeg(varargin)
 %
 % learnBoundStat .................. Learn boundary statistics 
 %       Inputs: 
-%           noteTableFile
-%           [outFile]
+%           trainScoresFolder       The folder, which has the annotated
+%                                   scores for training
+%           [boundStatFile]         The file where the boundary statistics
+%                                   are to be saved.
 %       Outputs:
+%           boundStatFile           The file where the boundary statistics
+%                                   are saved. It is the boundStatFile
+%                                   input if specified, else it is 
+%                                   "trainScoresFolder/boundStat.mat"
 % extractFeature .................. Feature Extraction
 %       Inputs: 
-%           (scoreFolder/scoreFile)
-%           boundStatFile
-%           [outFolder/outFile]
+%           (scoreFolder/scoreFile) The folder with scores or a single
+%                                   score to extract features
+%           boundStatFile:          The mat file with saved boundary stats
+%           [outFolder/outFile]     The folder to save the features or a 
+%                                   filename to save the feature of a 
+%                                   single score input
 %       Outputs:
+%           featureFiles            The paths for the saved feature files
+%           feature                 the extracted features
 % train ........................... Training
 %       Inputs: 
-%           trainingFolder
-%           [outFolder]
+%           trainFeatureFolder      The folder, which has the features
+%                                   extracted from the trained scores
+%           [FLDmodelFile]          The file where the training model is
+%                                   to be saved
 %       Outputs:
+%           FLDmodelFile            The file where the training model is
+%                                   saved. It is the FLDmodelFile input
+%                                   if specified, else it is
+%                                   "trainingFeatureFolder/FLDmodel.mat"
+%           FLDmodel                the trained model
 % segment ......................... Segmentation
 %       Inputs:
-%           (testFolder/testFile)
-%           FLDmodelFile
-%           [outFolder/outFile]
+%           (testFeatureFolder/     the .ptxt feature file associated with
+%              testFeatureFile)     a SymbTr file or a folder containing
+%                                   multiple .ptxt files
+%           FLDmodelFile            the segmentation model (or the file 
+%                                   which the model is saved)
+%           [outFolder/outFile]     the .autoSeg file associated with a 
+%                                   SymbTr file or a folder where .autoSeg 
+%                                   files will be saved for multiple SymbTr
 %       Outputs:
+%           bound_files             the paths of the files where the
+%                                   automatic segmentation boundaries are 
+%                                   stored
+%           bound                   the segmentation boundaries
 % evaluate ........................ Evaluation
 %       Inputs:
-%           [evaluateFolder/evaluateFile]
-%           [plotROC]
+%           trainFeatureFolder      the path to the directory with the
+%                                   score feature files extracted from the 
+%                                   scores used for training
+%           outFile                 the path to save the evaluation results 
+%                   
+%           plotRoc                 boolean to plot the region of 
+%                                   convergence or not
 %       Outputs:
-%
+%           outFile                 the path where evaluation results is 
+%                                   saved. Default is
+%                                   "trainFeatureFolder/results.mat"
+%           results:                the evaluation results
 % There are also some additional functions:
 % test ............................ Test run 
-%       It can be used to check whether the wrapper works without any
+%       It can be used to check whether the code works without any
 %       problems.
 %       Inputs: 
 %           - none -
 %       Outputs: 
 %           - none (will display success message on completion) -
-% getSegments ..................... Get manual segments in SymbTr
+% getSegments .................. Get the manually annotated segmentations
 %       Inputs: 
-%           (scoreFolder/scoreFile)
-%           [outFolder/outFile]
+%           trainScoresFolder       The folder, which has the annotated
+%                                   scores
+%           [segmentationsFolder]   The folder to save the segment
+%                                   boundaries
 %       Outputs:
+%           annotatedSegmentFiles   The files where the annotated segment
+%                                   boundaries are saved. The basefolder is
+%                                   the segmentationsFolder if specified 
+%                                   else it's the annotatedScoresFolder.
+%                                   The filename is the same with the score
+%                                   name, with an extension ".seg"
 %  
 %   Sertan Senturk, 2 December 2013
 %   Universitat Pompeu Fabra
