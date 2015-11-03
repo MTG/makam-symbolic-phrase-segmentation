@@ -17,7 +17,7 @@ eder.
 
 Bu derlemede sunulan araçlar:
 - Ticari amaçla kullanılamaz: satılamaz, ticari bir ürün içerisinde veya ticari bir ürünün oluşturulmasında kullanılamaz.
-- Dağıtım yetkisi sadece yazarlara aittir.  Kullanıcı dosyaları sadece araştırma amaçlı olarak kişisel kullanım için indirebilir, başka bir servis sunucu  üzerinden paylaşıma açamaz. 
+- Dağıtım yetkisi sadece yazarlara aittir.  Kullanıcı dosyaları sadece araştırma amaçlı olarak kişisel kullanım için indirebilir, başka bir servis sunucu üzerinden paylaşıma açamaz. 
 - Kullanılırken oluşan tüm riskler kullanıcıya aittir.
 
 Burada sunulan araçlar hiçbir ticari amaç güdülmeden kullanıma açılmıştır. Hazırlanmasına emek  harcayanlar bunun karşılığında 

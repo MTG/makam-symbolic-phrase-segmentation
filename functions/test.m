@@ -26,16 +26,51 @@ boundStatFile = fullfile(tmpFolder,'boundStat.mat');
 FLDmodelFile = fullfile(tmpFolder,'FLDmodel.mat');
 evaluationFile = fullfile(tmpFolder,'results.mat');
 
-%% call the complete process 
-[~] = phraseSeg('trainSegment', trainFolder, testFolder, ...
-    'trainFeatureFolder', trainFeatureFolder,...
-    'testFeatureFolder', testFeatureFolder,...
-    'trainSegmentFolder', trainSegmentFolder,...
-    'testSegmentFolder', testSegmentFolder,...
-    'boundStatFile', boundStatFile,...
-    'FLDmodelFile', FLDmodelFile,...
-    'evaluationFile', evaluationFile);
+%% compute melodic boundary histograms
+disp('- Extracting segment boundaries from SymbTr...')
+[~]=phraseSeg('getSegments',trainFolder,trainSegmentFolder);
+
+%% compute melodic boundary distributions
+disp('- Computing boundary stats...')
+[~] = phraseSeg('learnBoundStat', trainFolder, boundStatFile);
+
+%% Compute features for training data set and write to ptxt files
+disp('- Computing the features for the training scores...')
+[~] = phraseSeg('extractFeature', trainFolder, boundStatFile, ...
+    trainFeatureFolder);
+
+%% Training
+disp('- Training the model from manual segmentations in the training set...')
+[~] = phraseSeg('train', trainFeatureFolder, FLDmodelFile);
+
+%% Perform automatic segmentation using the trained model (.autoSeg and 
+% .seg files can be compared.) 
+disp('- Automatic segmentation on the training scores...')
+[~] = phraseSeg('segment', trainFeatureFolder, FLDmodelFile,...
+    trainSegmentFolder);
+
+%% Evalution on the training set: compare the automatic and manual
+% segmentations on the training set
+disp('- Evaluating the automatic segmentations on the training scores...')
+[~, results] = phraseSeg('evaluate', trainFeatureFolder, evaluationFile);
+fprintf('  ... The average ROC curve; AUC == %.4f\n',...
+    results.overall.roc.average)
+
+%% Compute features for the main data set and write to ptxt files
+disp('- Computing the features for the test scores...')
+[~] = phraseSeg('extractFeature', testFolder, boundStatFile, ...
+    testFeatureFolder);
+
+%% Perform automatic segmentation using the testing model
+disp('- Automatic segmentation on the test scores...')
+[~] = phraseSeg('segment', testFeatureFolder, FLDmodelFile, ...
+    testSegmentFolder);
+
+%% tamamlandi
+% completed
+disp('- Phrase segmentation complete!')
 
 %% rm the temporary folder
 rmdir(tmpFolder, 's')
+
 end
