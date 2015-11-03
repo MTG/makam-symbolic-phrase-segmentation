@@ -41,7 +41,7 @@ end
 
 %% klasordeki makam ve usuller listesi cikar
 %create a list of makams and usuls and the number of pieces, phrases, etc.
-[makamList,usulList]=createListOfMakamsUsuls(folderName , usulFile);
+[makamList,usulList]=createListOfMakamsUsuls(folderName, usulFile);
 
 %nota isimlerinin ve midiNo'larin okunmasi--------
 fid = fopen(noteTableFile);
@@ -51,15 +51,14 @@ midiNo = C{5};
 midiNo=round(midiNo*100);
 %-------------------------------------------------
 
-currentDir=pwd;
-cd(folderName);
-files=dir('*.txt');
+files=dir(fullfile(folderName, '*.txt'));
+filenames = cellfun(@(x) x(1:end-numel('.txt')), {files.name}, 'unif', 0);
+filepaths = cellfun(@(x) fullfile(folderName, x), {files.name}, 'unif', 0);
 
 [makamHist]=initializeMakamStruct(makamList,midiNo);
 [usulHist]=initializeUsulStruct(usulList,usulFile);
-
-for k=1:length(files)
-    s = regexp(files(k).name, '--', 'split');
+for k=1:length(filepaths)
+    s = regexp(filenames{k}, '--', 'split');
     
     makam=s(1);
     usul=s(3);
@@ -67,7 +66,7 @@ for k=1:length(files)
     %reading note matrix and boundary information from file
     %NM carries the note events in the standard format of MidiToolbox,
     %'bolut' carries the melodic boundaries in beats and milisecs
-    [NM, segment] = symbtr2nmat(files(k).name,usulFile);
+    [NM, segment] = symbtr2nmat(filepaths{k},usulFile);
     [segment]=filterSegmentation(segment);
     [NM]=filterNoteMatrix(NM);
     
@@ -145,7 +144,6 @@ end
 % save(outFile,'usulHist','makamHist','midiNo');
 boundStat = struct('usulHist', usulHist, 'makamHist', makamHist, ...
     'midiNo', midiNo);
-cd(currentDir);
 
 % save
 save(outFile, '-struct', 'boundStat');

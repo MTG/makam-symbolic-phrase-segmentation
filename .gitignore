@@ -6,3 +6,6 @@
 
 # autosave
 *.*~
+
+# matlab compiler
+phraseSeg/*

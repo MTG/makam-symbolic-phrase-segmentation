@@ -44,13 +44,9 @@ end
 
 function boundary = segmentFile(file, FLDmodel)
 %SEGMENT Summary of this function goes here
-%   Detailed explanation goes here
-iniDir = pwd;
-
-% Perform automatic segmentation using the trained model
+%   Perform automatic segmentation using the trained model
 boundary = autoMelodicSegmentation(file, FLDmodel);
 
-cd(iniDir)
 end
 
 function [infiles, outfiles] = parseIO(in, out)

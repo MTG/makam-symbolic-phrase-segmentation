@@ -58,7 +58,7 @@ function varargout = phraseSeg(varargin)
 %           [outFolder/outFile]
 %       Outputs:
 %  
-%   Sertan Senturk, 2 December 2012
+%   Sertan Senturk, 2 December 2013
 %   Universitat Pompeu Fabra
 %   email: sertan.senturk@upf.edu 
 inputErr = false;

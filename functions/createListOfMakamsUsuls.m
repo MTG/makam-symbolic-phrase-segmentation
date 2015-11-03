@@ -1,16 +1,15 @@
-function [makamList,usulList]=createListOfMakamsUsuls( folderName,usulFile )
+function [makamList,usulList]=createListOfMakamsUsuls(folderName, usulFile)
 %Klasordeki makam ve usullerin listesini ve kac parca icerdiklerini cikarir
 %Forms list of makams and usuls and the number of pieces, melodic boundaries, etc.
 
-currentDir=pwd;
-cd(folderName);
-files=dir('*.txt');
+files=dir(fullfile(folderName, '*.txt'));
+filepaths = cellfun(@(x) fullfile(folderName, x), {files.name}, 'unif', 0);
 
 % get makam, usul and the number of phrases per file in the dataset
 s = regexp({files.name}, '--', 'split');
 makams = cellfun(@(x) x{1}, s, 'unif', false);
 usuls = cellfun(@(x) x{3}, s, 'unif', false);
-numPhrases=cellfun(@(x) countPhrases(x,usulFile), {files.name});
+numPhrases=cellfun(@(x) countPhrases(x,usulFile), filepaths);
 
 [makams_unique, numFiles_makams_unique, numPhrases_makams_unique] = ...
     getStatsPerClass(makams, numPhrases);
@@ -23,8 +22,6 @@ makamList=struct('name',makams_unique,...
 usulList=struct('name',usuls_unique,...
     'numFiles',num2cell(numFiles_usuls_unique),...
     'numPhrases',num2cell(numPhrases_usuls_unique));
-
-cd(currentDir);
 end
 
 function [names_unique, numFiles, numPhrases] = getStatsPerClass(...

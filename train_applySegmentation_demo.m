@@ -8,13 +8,13 @@
 
 %--------------------------------
 %% get the path of the script as a reference point to function calls, I/O..
-addpath(fullfile('functions'))
+addpath(genpath(fullfile('functions')))
 p = fileparts(mfilename('fullpath'));
 
 %% Girdiler/Input
 % Kendi egitim verilerinizi ve test verilerinizi kullanmak isterseniz,
 % asagidaki klasorleri duzeltin
-% If you want to use your own tarining and test sets, change the
+% If you want to use your own training and test sets, change the
 % directories below accordingly
 trainDbaFolder = fullfile(p, 'sampleData', 'train');
 testDbaFolder = fullfile(p, 'sampleData', 'test');
@@ -24,12 +24,12 @@ testDbaFolder = fullfile(p, 'sampleData', 'test');
 % isim degiskenlerini duzeltin
 % if you want to save your outputs to different locations, change the
 % file/folder variables below accordingly
-outTrainFolder = trainDbaFolder;
-outTestFolder = testDbaFolder;
+outTrainFolder = fullfile(p, 'sampleData', 'train_out');
+outTestFolder = fullfile(p, 'sampleData', 'test_out');
 
-boundStatFile = fullfile(trainDbaFolder,'boundStat.mat');
-FLDmodelFile = fullfile(trainDbaFolder,'FLDmodel.mat');
-evaluationFile = fullfile(trainDbaFolder,'results.mat');
+boundStatFile = fullfile(outTrainFolder,'boundStat.mat');
+FLDmodelFile = fullfile(outTrainFolder,'FLDmodel.mat');
+evaluationFile = fullfile(outTrainFolder,'results.mat');
 
 %% Egitim verilerinde yazili manuel segmentasyonlari .seg uzantili 
 % dosyalara kaydet

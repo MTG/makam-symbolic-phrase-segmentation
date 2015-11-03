@@ -18,7 +18,6 @@ function [outFile, FLDmodel] = train(trainingFeatureFolder, outFile)
 %   email: sertan.senturk@upf.edu 
 
 % I/O
-iniDir = pwd;
 if ~exist(trainingFeatureFolder, 'dir')
     error('train:trainingFolder', 'The training folder does not exist!')
 else % make sure the path is absolute
@@ -38,7 +37,6 @@ end
 
 % Perform learning/training
 FLDmodel = trainMelodicSegmentation(trainingFeatureFolder);
-cd(iniDir)
 
 % save
 save(outFile, '-struct', 'FLDmodel');
