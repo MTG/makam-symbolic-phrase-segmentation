@@ -28,7 +28,7 @@ evaluationFile = fullfile(tmpFolder,'results.mat');
 
 %% compute melodic boundary histograms
 disp('- Extracting segment boundaries from SymbTr...')
-[~]=phraseSeg('getSegments',trainFolder,trainSegmentFolder);
+[~]=phraseSeg('getSegments', trainFolder, trainSegmentFolder);
 
 %% compute melodic boundary distributions
 disp('- Computing boundary stats...')
@@ -66,11 +66,9 @@ disp('- Automatic segmentation on the test scores...')
 [~] = phraseSeg('segment', testFeatureFolder, FLDmodelFile, ...
     testSegmentFolder);
 
-%% tamamlandi
-% completed
+%% completed
 disp('- Phrase segmentation complete!')
 
 %% rm the temporary folder
 rmdir(tmpFolder, 's')
-
 end
