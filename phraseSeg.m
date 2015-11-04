@@ -196,7 +196,7 @@ if inputErr
 end
 
 %% outputs
-if ~ismember(varargin{1}, {'test', 'wrapper'})
+if ~ismember(varargin{1}, {'unitTest', 'wrapper'})
     if iscell(file) % multiple files were processed
         varargout{1} = char(GetFullPath(file(:)));
     else
