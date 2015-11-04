@@ -3,6 +3,7 @@ function [makamList,usulList]=createListOfMakamsUsuls(folderName, usulFile)
 %Forms list of makams and usuls and the number of pieces, melodic boundaries, etc.
 
 files=dir(fullfile(folderName, '*.txt'));
+files(cellfun(@(x) x(1)=='.', {files.name})) = []; % remove hidden files
 filepaths = cellfun(@(x) fullfile(folderName, x), {files.name}, 'unif', 0);
 
 % get makam, usul and the number of phrases per file in the dataset

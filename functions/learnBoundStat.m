@@ -52,6 +52,7 @@ midiNo=round(midiNo*100);
 %-------------------------------------------------
 
 files=dir(fullfile(folderName, '*.txt'));
+files(cellfun(@(x) x(1)=='.', {files.name})) = []; % remove hidden files
 filenames = cellfun(@(x) x(1:end-numel('.txt')), {files.name}, 'unif', 0);
 filepaths = cellfun(@(x) fullfile(folderName, x), {files.name}, 'unif', 0);
 

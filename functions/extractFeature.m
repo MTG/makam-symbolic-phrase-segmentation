@@ -79,6 +79,7 @@ function [infiles, outfiles] = parseIO(in, out)
 % check whether the specified input is a file or folder
 if exist(in, 'dir') % folder
     infiles = dir(fullfile(in, '*.txt'));
+    infiles(cellfun(@(x) x(1)=='.', {infiles.name})) = []; % remove hidden files
     infiles = cellfun(@(x) fullfile(in, x), {infiles.name}, 'unif', false);
 elseif exist(in, 'file') % file
     infiles = {in};

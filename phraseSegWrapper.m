@@ -4,8 +4,8 @@ close all
 
 addpath(genpath(fullfile('functions')))
 %% I/O
-trainFolder = fullfile('sampleData', 'train');
-testFolder = fullfile('sampleData', 'test');
+trainFolder = '/Volumes/SHARED/data/turkish_makam_corpus_stats/data/segmentedScores/expert1';
+testFolder = '/Volumes/SHARED/data/SymbTr/txt/';
 
 tmpFolder = fullfile('tmp');
 trainFeatureFolder = fullfile(tmpFolder, 'trainFeature');
@@ -16,5 +16,5 @@ boundStatFile = fullfile(tmpFolder,'boundStat.mat');
 FLDmodelFile = fullfile(tmpFolder,'FLDmodel.mat');
 
 %% run function
-phraseSeg('wrapper', trainFolder, boundStatFile, trainFeatureFolder,...
-    FLDmodelFile, testFolder, testFeatureFolder, testSegmentFolder)
+phraseSeg('trainWrapper', trainFolder, boundStatFile, trainFeatureFolder,...
+    FLDmodelFile)

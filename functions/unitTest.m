@@ -1,5 +1,5 @@
-function test()
-% TEST Tests the phrase segmentation algorithm
+function unitTest()
+% UNITTEST Tests the phrase segmentation algorithm
 %   This function checks whether the implemented algorithms for automatic
 %   phrase segmentation works. It calls "learnBoundStat, extractFeature,
 %   train, segment, evaluate" sequentially on a training dataset to learn
