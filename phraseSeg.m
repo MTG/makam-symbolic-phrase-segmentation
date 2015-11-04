@@ -118,9 +118,9 @@ switch varargin{1}
     case 'wrapper'
         if nargin ~= 8; inputErr = true; else wrapper(varargin{2:end}); end
     case 'trainWrapper'
-        if nargin ~= 6; inputErr = true; else trainWrapper(varargin{2:end}); end
-    case 'segmentWrapper'
         if nargin ~= 5; inputErr = true; else trainWrapper(varargin{2:end}); end
+    case 'segmentWrapper'
+        if nargin ~= 6; inputErr = true; else segmentWrapper(varargin{2:end}); end
     case 'getSegments' % extract segments in a SymbTrFile
         switch nargin
             case {2, 3}
@@ -196,7 +196,7 @@ if inputErr
 end
 
 %% outputs
-if ~ismember(varargin{1}, {'unitTest', 'wrapper'})
+if ~ismember(varargin{1}, {'unitTest', 'wrapper', 'trainWrapper', 'segmentWrapper'})
     if iscell(file) % multiple files were processed
         varargout{1} = char(GetFullPath(file(:)));
     else

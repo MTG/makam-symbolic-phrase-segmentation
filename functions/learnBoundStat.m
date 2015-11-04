@@ -69,7 +69,7 @@ for k=1:length(filepaths)
     %'bolut' carries the melodic boundaries in beats and milisecs
     [NM, segment, noteIndex] = symbtr2nmat(filepaths{k},usulFile);
     [segment]=filterSegmentation(segment);
-    [NM, noteIndex]=filterNoteMatrix(NM, noteIndex);
+    NM = filterNoteMatrix(NM, noteIndex);
     
     %finding makam and usul index / makam ve usul indeksini bul
     for makamInd=1:length(makamList)
