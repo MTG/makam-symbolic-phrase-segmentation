@@ -108,16 +108,8 @@ inputErr = false;
 
 %% I/O
 p = fileparts(mfilename('fullpath'));
-
-% dictionary files. We check the path structure in MATLAB and the binary 
-% compiled by MATLAB runtime compiler
-usulFile_src={fullfile(p,'files','usuller.txt'), ... % path in MATLAB
-    fullfile(p,'..','files','usuller.txt')}; % path in MCR
-noteTableFile_src={fullfile(p,'files','noteTable.txt'), ... % path in MATLAB
-    fullfile(p,'..','files','noteTable.txt')}; % path in MCR
-usulFile = usulFile_src{cellfun(@(x) ~isempty(dir(x)), usulFile_src)};
-noteTableFile = noteTableFile_src{cellfun(@(x) ~isempty(dir(x)), ...
-    noteTableFile_src)};
+usulFile = fullfile('makamdata','usuls.txt');
+noteTableFile = fullfile('makamdata','noteTable.txt');
 
 %% run the specified function
 switch varargin{1}

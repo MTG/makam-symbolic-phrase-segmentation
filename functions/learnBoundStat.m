@@ -22,10 +22,10 @@ function [outFile, boundStat] = learnBoundStat(folderName, ...
 
 %% I/O
 if ~exist('noteTableFile', 'var') || (isempty(noteTableFile))
-    noteTableFile='./files/noteTable.txt';
+    noteTableFile = fullfile('makamdata','noteTable.txt');
 end
 if ~exist('usulFile', 'var') || (isempty(usulFile))
-    usulFile='./files/usuller.txt';
+    usulFile = fullfile('makamdata','usuls.txt');
 end
 if ~exist('outFile', 'var') || isempty(outFile)
     outFile = fullfile(folderName, 'boundStat.mat');

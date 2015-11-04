@@ -8,7 +8,7 @@ function [time, mertebe] = findTime_mertebe(usulName, usulFile)
 
 if (nargin == 1) || (strcmp(usulFile, ''))
     p = fileparts(mfilename('fullpath'));
-    usulFile  =fullfile(p,'files','usuller.txt');
+    usulFile = fullfile('makamdata','usuls.txt');
 end
 
 %Default
