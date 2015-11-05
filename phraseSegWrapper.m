@@ -16,7 +16,6 @@ phraseSeg('trainWrapper', trainJson, boundStatFile, FLDmodelFile)
 
 %% testing I/O
 % testFolder = '/Volumes/SHARED/data/SymbTr/txt/';
-testFolder = 'sampleData/test/';
 testSegmentFolder = fullfile(tmpFolder, 'testSegment');
 
 testJson = 'sampleData/testFile.json';
