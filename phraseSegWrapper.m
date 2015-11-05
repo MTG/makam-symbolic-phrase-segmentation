@@ -8,24 +8,24 @@ addpath(genpath(fullfile('functions')))
 % testFolder = '/Volumes/SHARED/data/SymbTr/txt/';
 
 trainFolder = 'sampleData/train/';
-testFolder = 'sampleData/test/';
 
 tmpFolder = fullfile('sampleData/tmp');
 trainFeatureFolder = fullfile(tmpFolder, 'trainFeature');
-testFeatureFolder = fullfile(tmpFolder, 'testFeature');
-testSegmentFolder = fullfile(tmpFolder, 'testSegment');
 
 boundStatFile = fullfile(tmpFolder,'boundStat.mat');
 FLDmodelFile = fullfile(tmpFolder,'FLDmodel.mat');
 
-testFile = 'sampleData/test/hicaz--sarki--aksak--beni_canimdan--muzaffer_ilkar.txt';
-testFeatureFile = 'sampleData/tmp/testFeature/hicaz--sarki--aksak--beni_canimdan--muzaffer_ilkar.ptxt';
-testSegmentFile = 'sampleData/tmp/testSegment/hicaz--sarki--aksak--beni_canimdan--muzaffer_ilkar.autoSeg';
+testFolder = 'sampleData/test/';
+testFeatureFolder = fullfile(tmpFolder, 'testFeature');
+testSegmentFolder = fullfile(tmpFolder, 'testSegment');
+
+testFile = fullfile(testFolder, 'hicaz--sarki--aksak--beni_canimdan--muzaffer_ilkar.txt');
+testFeatureFile = fullfile(testFeatureFolder, 'hicaz--sarki--aksak--beni_canimdan--muzaffer_ilkar.ptxt');
+testSegmentFile = fullfile(testSegmentFolder, 'hicaz--sarki--aksak--beni_canimdan--muzaffer_ilkar.autoSeg');
 
 %% training
 phraseSeg('trainWrapper', trainFolder, boundStatFile, ...
     trainFeatureFolder, FLDmodelFile)
-
 %% segmentation
 phraseSeg('segmentWrapper', boundStatFile, FLDmodelFile, testFile, ...
     testFeatureFile, testSegmentFile)
