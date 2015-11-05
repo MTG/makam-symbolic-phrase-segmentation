@@ -1,7 +1,7 @@
 function piecedata=loadPieceData(featureIn)
 % Loads the data related to the SymbTr score (features, name, feature data size)
 
-if ismatrix(featureIn)
+if isnumeric(featureIn)
     piecedata.filename = '';
     piecedata.data=featureIn;
 else
