@@ -33,7 +33,8 @@ end
 %% segmentation
 segments = cell(numel(infiles),1);
 for k = 1:numel(infiles)
-    [~, segments{k}] = symbtr2nmat(infiles{k},usulFile);
+    [~, name] = fileparts(infiles{k});
+    [~, segments{k}] = symbtr2nmat(infiles{k},name,usulFile);
     
     fid=fopen(segFiles{k},'w+t');
     for m=1:length(segments{k})%uzman bolut bilgisinin son sutuna islenmesi

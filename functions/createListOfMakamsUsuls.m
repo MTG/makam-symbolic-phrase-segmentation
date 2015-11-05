@@ -1,16 +1,23 @@
-function [makamList,usulList]=createListOfMakamsUsuls(folderName, usulFile)
+function [makamList,usulList]=createListOfMakamsUsuls(processIn, usulFile)
 %Klasordeki makam ve usullerin listesini ve kac parca icerdiklerini cikarir
 %Forms list of makams and usuls and the number of pieces, melodic boundaries, etc.
 
-files=dir(fullfile(folderName, '*.txt'));
-files(cellfun(@(x) x(1)=='.', {files.name})) = []; % remove hidden files
-filepaths = cellfun(@(x) fullfile(folderName, x), {files.name}, 'unif', 0);
+if exist(processIn, 'dir')
+    files=dir(fullfile(processIn, '*.txt'));
+    files(cellfun(@(x) x(1)=='.', {files.name})) = []; % remove hidden files
+    filenames = {files.name};
+    filepaths = cellfun(@(x) fullfile(processIn, x), filenames, 'unif', 0);
+elseif exist(processIn, 'file') % json file with list of score files to process
+    filetemp = cell2mat(external.jsonlab.loadjson(processIn));
+    filenames = {filetemp.name};
+    filepaths = {filetemp.path};
+end
 
 % get makam, usul and the number of phrases per file in the dataset
-s = regexp({files.name}, '--', 'split');
+s = regexp(filenames, '--', 'split');
 makams = cellfun(@(x) x{1}, s, 'unif', false);
 usuls = cellfun(@(x) x{3}, s, 'unif', false);
-numPhrases=cellfun(@(x) countPhrases(x,usulFile), filepaths);
+numPhrases=cellfun(@(x,y) countPhrases(x,y,usulFile), filepaths, filenames);
 
 [makams_unique, numFiles_makams_unique, numPhrases_makams_unique] = ...
     getStatsPerClass(makams, numPhrases);
@@ -44,8 +51,8 @@ label_mat(idx) = 1;
 numPhrases = numPhrases_perFile * label_mat';
 end
 
-function numPhrase=countPhrases(fileName,usulFile)
-[~, segment] = symbtr2nmat(fileName,usulFile);
+function numPhrase=countPhrases(filepath,filename,usulFile)
+[~, segment] = symbtr2nmat(filepath,filename,usulFile);
 [segment]=filterSegmentation(segment);
 numPhrase=length(segment)-1;
 end

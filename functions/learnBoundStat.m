@@ -1,4 +1,4 @@
-function [outFile, boundStat] = learnBoundStat(folderName, ...
+function [outFile, boundStat] = learnBoundStat(processIn, ...
     noteTableFile, usulFile, outFile)
 % LEARNBOUNDSTAT Learn boundary statistics from manual phrase segmentations
 %   This function computes the melodic boundary distributions from the data
@@ -28,7 +28,7 @@ if ~exist('usulFile', 'var') || (isempty(usulFile))
     usulFile = fullfile('makamdata','usuls.txt');
 end
 if ~exist('outFile', 'var') || isempty(outFile)
-    outFile = fullfile(folderName, 'boundStat.mat');
+    outFile = fullfile(processIn, 'boundStat.mat');
 else
     if ~exist(fileparts(outFile), 'dir') % make sure the folder exist
         status = mkdir(fileparts(outFile));
@@ -41,7 +41,7 @@ end
 
 %% klasordeki makam ve usuller listesi cikar
 %create a list of makams and usuls and the number of pieces, phrases, etc.
-[makamList,usulList]=createListOfMakamsUsuls(folderName, usulFile);
+[makamList,usulList]=createListOfMakamsUsuls(processIn, usulFile);
 
 %nota isimlerinin ve midiNo'larin okunmasi--------
 fid = fopen(noteTableFile);
@@ -51,10 +51,16 @@ midiNo = C{5};
 midiNo=round(midiNo*100);
 %-------------------------------------------------
 
-files=dir(fullfile(folderName, '*.txt'));
-files(cellfun(@(x) x(1)=='.', {files.name})) = []; % remove hidden files
-filenames = cellfun(@(x) x(1:end-numel('.txt')), {files.name}, 'unif', 0);
-filepaths = cellfun(@(x) fullfile(folderName, x), {files.name}, 'unif', 0);
+if exist(processIn, 'dir')
+    files=dir(fullfile(processIn, '*.txt'));
+    files(cellfun(@(x) x(1)=='.', {files.name})) = []; % remove hidden files
+    filenames = cellfun(@(x) x(1:end-numel('.txt')), {files.name}, 'unif', 0);
+    filepaths = cellfun(@(x) fullfile(processIn, x), {files.name}, 'unif', 0);
+else 
+    files = cell2mat(external.jsonlab.loadjson(processIn));
+    filenames = {files.name};
+    filepaths = {files.path};
+end
 
 [makamHist]=initializeMakamStruct(makamList,midiNo);
 [usulHist]=initializeUsulStruct(usulList,usulFile);
@@ -67,7 +73,7 @@ for k=1:length(filepaths)
     %reading note matrix and boundary information from file
     %NM carries the note events in the standard format of MidiToolbox,
     %'bolut' carries the melodic boundaries in beats and milisecs
-    [NM, segment, noteIndex] = symbtr2nmat(filepaths{k},usulFile);
+    [NM, segment, noteIndex] = symbtr2nmat(filepaths{k},filenames{k},usulFile);
     [segment]=filterSegmentation(segment);
     NM = filterNoteMatrix(NM, noteIndex);
     

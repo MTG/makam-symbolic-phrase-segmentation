@@ -1,0 +1,98 @@
+[
+	{
+		"path": "sampleData/train/hicaz--agirsemai--agirsenginsemai--guller_kizarir--ibrahim_aga.txt",
+		"name": "hicaz--agirsemai--agirsenginsemai--guller_kizarir--ibrahim_aga"
+	},
+	{
+		"path": "sampleData/train/hicaz--beste--agircenber--dusmesin_miskin--zaharya.txt",
+		"name": "hicaz--beste--agircenber--dusmesin_miskin--zaharya"
+	},
+	{
+		"path": "sampleData/train/hicaz--beste--agirduyek--ey_cesm-i--dede_efendi.txt",
+		"name": "hicaz--beste--agirduyek--ey_cesm-i--dede_efendi"
+	},
+	{
+		"path": "sampleData/train/hicaz--beste--lenkfahte--baktikca_husn_u--suphi_ezgi.txt",
+		"name": "hicaz--beste--lenkfahte--baktikca_husn_u--suphi_ezgi"
+	},
+	{
+		"path": "sampleData/train/hicaz--kalenderi--aksak--ebrulerinin_zahmi--.txt",
+		"name": "hicaz--kalenderi--aksak--ebrulerinin_zahmi--"
+	},
+	{
+		"path": "sampleData/train/hicaz--kocekce--aksak--baharin_zamani--dede_efendi.txt",
+		"name": "hicaz--kocekce--aksak--baharin_zamani--dede_efendi"
+	},
+	{
+		"path": "sampleData/train/hicaz--mandra--devrituran--hicaz_mandra--lavtaci_andon.txt",
+		"name": "hicaz--mandra--devrituran--hicaz_mandra--lavtaci_andon"
+	},
+	{
+		"path": "sampleData/train/hicaz--pesrev--fahte----neyzen_salim_bey.txt",
+		"name": "hicaz--pesrev--fahte----neyzen_salim_bey"
+	},
+	{
+		"path": "sampleData/train/hicaz--sarki--agir_aksaksemai--hasret_odu--tanburi_ali_efendi.txt",
+		"name": "hicaz--sarki--agir_aksaksemai--hasret_odu--tanburi_ali_efendi"
+	},
+	{
+		"path": "sampleData/train/hicaz--sarki--agiraksak--bir_nigah_et--sekerci_cemil_bey.txt",
+		"name": "hicaz--sarki--agiraksak--bir_nigah_et--sekerci_cemil_bey"
+	},
+	{
+		"path": "sampleData/train/hicaz--sarki--agiraksak--derdimi_ummana--serif_icli.txt",
+		"name": "hicaz--sarki--agiraksak--derdimi_ummana--serif_icli"
+	},
+	{
+		"path": "sampleData/train/hicaz--sarki--agiraksak--seni_sevda_cicegim--misirli_ibrahim.txt",
+		"name": "hicaz--sarki--agiraksak--seni_sevda_cicegim--misirli_ibrahim"
+	},
+	{
+		"path": "sampleData/train/hicaz--sarki--agiraksak--var_mi_sen_gibi--yorgaki.txt",
+		"name": "hicaz--sarki--agiraksak--var_mi_sen_gibi--yorgaki"
+	},
+	{
+		"path": "sampleData/train/hicaz--sarki--agirevfer--bak_ne_hale--haci_arif_bey.txt",
+		"name": "hicaz--sarki--agirevfer--bak_ne_hale--haci_arif_bey"
+	},
+	{
+		"path": "sampleData/train/hicaz--sarki--aksak--ben_gamli_hazan--melahat_pars.txt",
+		"name": "hicaz--sarki--aksak--ben_gamli_hazan--melahat_pars"
+	},
+	{
+		"path": "sampleData/train/hicaz--sarki--aksak--beni_sev--udi_ibrahim_efendi.txt",
+		"name": "hicaz--sarki--aksak--beni_sev--udi_ibrahim_efendi"
+	},
+	{
+		"path": "sampleData/train/hicaz--sarki--aksak--bilmiyorum--sevki_bey.txt",
+		"name": "hicaz--sarki--aksak--bilmiyorum--sevki_bey"
+	},
+	{
+		"path": "sampleData/train/hicaz--sarki--aksak--bir_bahar--selahattin_pinar.txt",
+		"name": "hicaz--sarki--aksak--bir_bahar--selahattin_pinar"
+	},
+	{
+		"path": "sampleData/train/hicaz--sarki--aksak--dil_yaresini--sevki_bey.txt",
+		"name": "hicaz--sarki--aksak--dil_yaresini--sevki_bey"
+	},
+	{
+		"path": "sampleData/train/hicaz--sarki--aksak--gulsen-i_husnune--rifat_bey.txt",
+		"name": "hicaz--sarki--aksak--gulsen-i_husnune--rifat_bey"
+	},
+	{
+		"path": "sampleData/train/hicaz--sarki--aksak--hastayim_yasiyorum--hirant_kenkiloglu.txt",
+		"name": "hicaz--sarki--aksak--hastayim_yasiyorum--hirant_kenkiloglu"
+	},
+	{
+		"path": "sampleData/train/hicaz--sarki--aksak--kis_geldi--sevki_bey.txt",
+		"name": "hicaz--sarki--aksak--kis_geldi--sevki_bey"
+	},
+	{
+		"path": "sampleData/train/hicaz--sarki--aksak--sazlar_calinir--yesari_asim_arsoy.txt",
+		"name": "hicaz--sarki--aksak--sazlar_calinir--yesari_asim_arsoy"
+	},
+	{
+		"path": "sampleData/train/hicaz--sarki--aksak--su_karsiki_dagda--dede_efendi.txt",
+		"name": "hicaz--sarki--aksak--su_karsiki_dagda--dede_efendi"
+	}
+]

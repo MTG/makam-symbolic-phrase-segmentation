@@ -7,10 +7,11 @@ function featureMatrix = boundaryFeatures(symbTrFile, makamHist, ...
 %is computed for each note in the symbTrFile file and the results are 
 %written to a ptxt
 
-[NM, segment, noteIndex] = symbtr2nmat(symbTrFile,usulFile);
+[NM, segment, noteIndex] = symbtr2nmat(symbTrFile.path, symbTrFile.name,...
+    usulFile);
 
 if(length(NM)<7)
-    warning('boundaryFeatures:NM',['Too few data in NM: ' symbTrFile]);
+    warning('boundaryFeatures:NM',['Too few data in NM: ' symbTrFile.name]);
     featureMatrix = [];
     return;
 else
@@ -21,7 +22,7 @@ if(length(segment)>2)%eger bolut iceren bir dosya ise
     for k=1:length(segment)
         if(isnan(segment(k).beat))
             disp('------Bolut bilgisi Nan iceriyor------');
-            disp(symbTrFile);return;
+            disp(symbTrFile.name);return;
         end
     end
 end

@@ -35,7 +35,7 @@ end
 %%
 feature = cell(numel(infiles),1);
 for k = 1:numel(infiles)
-    feature{k} = extractFeatureFile(infiles{k}, boundStat, usulFile);
+    feature{k} = extractFeatureFile(infiles(k), boundStat, usulFile);
     if ~isempty(feature_files)
         dlmwrite(feature_files{k},feature{k},'delimiter','\t',...
             'precision','%.4f');
@@ -58,8 +58,7 @@ usulHist = boundStat.usulHist;
 midiNo = boundStat.midiNo;
 
 % get the makam and usul from the SymbTr filename
-[~, fileName] = fileparts(symbTrFile);
-s = regexp(fileName, '--', 'split');
+s = regexp(symbTrFile.name, '--', 'split');
 makam=s(1);usul=s(3);
 
 % find the makam and usul indices
@@ -72,7 +71,7 @@ if (any(makamBool) && any(usulBool))
         usulHist(usulBool), usulFile, midiNo);
 else
     feature = [];
-    warning('extractFeature:missingUsulMakam', [symbTrFile ': makam '...
+    warning('extractFeature:missingUsulMakam', [symbTrFile.name ': makam '...
         'and/or usul could not be found, segmentation is not performed']);
 end
 end
@@ -82,11 +81,20 @@ function [infiles, outfiles] = parseIO(in, out)
 
 % check whether the specified input is a file or folder
 if exist(in, 'dir') % folder
-    infiles = dir(fullfile(in, '*.txt'));
-    infiles(cellfun(@(x) x(1)=='.', {infiles.name})) = []; % remove hidden files
-    infiles = cellfun(@(x) fullfile(in, x), {infiles.name}, 'unif', false);
+    paths = dir(fullfile(in, '*.txt'));
+    paths(cellfun(@(x) x(1)=='.', {paths.name})) = []; % remove hidden files
+    paths = cellfun(@(x) fullfile(in, x), {paths.name}, 'unif', false);
+    
+    for k = numel(paths):-1:1
+        [~, name] = fileparts(paths{k});
+        infiles(k) = struct('path',paths{k}, 'name', name);
+    end
 elseif exist(in, 'file') % file
-    infiles = {in};
+    try  % json file
+        infiles = cell2mat(external.jsonlab.loadjson(in));
+    catch
+        infiles = {in};
+    end
 else
     error('parseIO:input', 'Input should be a folder or a symbTr file')
 end
@@ -97,7 +105,7 @@ else % output given
     % check if the out is defined as a folder or file
     [~,~,ext] = fileparts(out);
     if isempty(ext) % folder
-        [~, fnames] = cellfun(@fileparts, infiles, 'unif', false);
+        [~, fnames] = cellfun(@fileparts, {infiles.path}, 'unif', false);
         outfiles = cellfun(@(x) fullfile(out, [x '.ptxt']), fnames, ...
             'unif', 0);
     else % file

@@ -3,29 +3,25 @@ clc
 close all
 
 addpath(genpath(fullfile('functions')))
-%% I/O
+%% training I/O
 % trainFolder = '/Volumes/SHARED/data/turkish_makam_corpus_stats/data/segmentedScores/expert1';
-% testFolder = '/Volumes/SHARED/data/SymbTr/txt/';
-
-trainFolder = 'sampleData/train/';
+trainJson = 'sampleData/trainFiles.json';
 
 tmpFolder = fullfile('sampleData/tmp');
-trainFeatureFolder = fullfile(tmpFolder, 'trainFeature');
-
 boundStatFile = fullfile(tmpFolder,'boundStat.mat');
 FLDmodelFile = fullfile(tmpFolder,'FLDmodel.mat');
 
+%% training
+phraseSeg('trainWrapper', trainJson, boundStatFile, FLDmodelFile)
+
+%% testing I/O
+% testFolder = '/Volumes/SHARED/data/SymbTr/txt/';
 testFolder = 'sampleData/test/';
-testFeatureFolder = fullfile(tmpFolder, 'testFeature');
 testSegmentFolder = fullfile(tmpFolder, 'testSegment');
 
-testFile = fullfile(testFolder, 'hicaz--sarki--aksak--beni_canimdan--muzaffer_ilkar.txt');
-testFeatureFile = fullfile(testFeatureFolder, 'hicaz--sarki--aksak--beni_canimdan--muzaffer_ilkar.ptxt');
+testJson = 'sampleData/testFile.json';
 testSegmentFile = fullfile(testSegmentFolder, 'hicaz--sarki--aksak--beni_canimdan--muzaffer_ilkar.autoSeg');
 
-%% training
-phraseSeg('trainWrapper', trainFolder, boundStatFile, FLDmodelFile)
-
 %% segmentation
-phraseSeg('segmentWrapper', boundStatFile, FLDmodelFile, testFile, ...
+phraseSeg('segmentWrapper', boundStatFile, FLDmodelFile, testJson, ...
     testSegmentFile)

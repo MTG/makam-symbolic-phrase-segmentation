@@ -1,4 +1,4 @@
-function [NM, segment, noteIndex] = symbtr2nmat(fileName, usulFile)
+function [NM, segment, noteIndex] = symbtr2nmat(filepath, filename, usulFile)
 %symbtr2nmat:   Converts SymbTr file to noteMatrix and segmentation matrices
 %   filename:   Name and path of the SymbTr file (.txt)
 %   NM:         Output in MIDI Toolbox notematrix format
@@ -8,10 +8,13 @@ function [NM, segment, noteIndex] = symbtr2nmat(fileName, usulFile)
 %   Addendum:   Now process SymbTr files coming from Mus2, which includes
 %               the word "Es" for rests.
 
-u                       = regexp(fileName, '--', 'split');
+if ~exist('usulFile', 'var')
+
+end
+u                       = regexp(filename, '--', 'split');
 usulName                = u(3);
 [~, mertebe]            = findTime_mertebe(usulName, usulFile);
-[syn, gecki]            = readSymbTr(fileName);
+[syn, gecki]            = readSymbTr(filepath);
 [syn]                   = computeCums(syn, mertebe);
 [syn]                   = removeRests(syn, mertebe);
 [NM, segment, noteIndex]= extractInfo(syn, mertebe, gecki);
