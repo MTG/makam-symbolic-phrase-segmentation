@@ -1,4 +1,4 @@
-function [outFile, FLDmodel] = train(trainingFeatureFolder, outFile)
+function [outFile, FLDmodel] = train(trainingFeatureIn, outFile)
 %TRAIN Trains the model for automatic phrase segmentation
 %   The function extracts features extracted from the training scores which
 %   also holds the information on manual segmentations. 
@@ -18,25 +18,27 @@ function [outFile, FLDmodel] = train(trainingFeatureFolder, outFile)
 %   email: sertan.senturk@upf.edu 
 
 % I/O
-if ~exist(trainingFeatureFolder, 'dir')
+if iscell(trainingFeatureIn)
+    %pass
+elseif ~exist(trainingFeatureIn, 'dir')
     error('train:trainingFolder', 'The training folder does not exist!')
 else % make sure the path is absolute
-    trainingFeatureFolder = GetFullPath(trainingFeatureFolder);
+    trainingFeatureIn = GetFullPath(trainingFeatureIn);
 end
 if ~exist('outFile', 'var') || isempty(outFile)
-    outFile = fullfile(trainingFeatureFolder, 'FLDmodel.mat');
+    outFile = fullfile(trainingFeatureIn, 'FLDmodel.mat');
 else
     if ~exist(fileparts(outFile), 'dir') % make sure the folder exist
         status = mkdir(fileparts(outFile));
         if ~status
-            error('learnBoundStat:outFile', ['The folder to save the stats '...
+            error('train:outFile', ['The folder to save the FLDmodel '...
                 'cannot be created. Check the write permisions.'])
         end
     end
 end
 
 % Perform learning/training
-FLDmodel = trainMelodicSegmentation(trainingFeatureFolder);
+FLDmodel = trainMelodicSegmentation(trainingFeatureIn);
 
 % save
 save(outFile, '-struct', 'FLDmodel');

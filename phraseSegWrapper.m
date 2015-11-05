@@ -18,9 +18,14 @@ testSegmentFolder = fullfile(tmpFolder, 'testSegment');
 boundStatFile = fullfile(tmpFolder,'boundStat.mat');
 FLDmodelFile = fullfile(tmpFolder,'FLDmodel.mat');
 
-%% run function
+testFile = 'sampleData/test/hicaz--sarki--aksak--beni_canimdan--muzaffer_ilkar.txt';
+testFeatureFile = 'sampleData/tmp/testFeature/hicaz--sarki--aksak--beni_canimdan--muzaffer_ilkar.ptxt';
+testSegmentFile = 'sampleData/tmp/testSegment/hicaz--sarki--aksak--beni_canimdan--muzaffer_ilkar.autoSeg';
+
+%% training
 phraseSeg('trainWrapper', trainFolder, boundStatFile, ...
     trainFeatureFolder, FLDmodelFile)
 
-phraseSeg('segmentWrapper', boundStatFile, FLDmodelFile, testFolder, ...
-    testFeatureFolder, testSegmentFolder)
+%% segmentation
+phraseSeg('segmentWrapper', boundStatFile, FLDmodelFile, testFile, ...
+    testFeatureFile, testSegmentFile)

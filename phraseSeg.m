@@ -168,7 +168,7 @@ switch varargin{1}
     case 'evaluate' % evaluation
         switch nargin
             case {2, 3, 4}
-                [file,varargout{2}]=evaluate(varargin{2:end});
+                [file, varargout{2}]=evaluate(varargin{2:end});
             otherwise
                 inputErr = true;
         end

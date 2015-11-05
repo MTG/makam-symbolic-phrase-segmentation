@@ -1,14 +1,14 @@
 function [feature_files, feature] = extractFeature(in, boundStat, ...
     usulFile, out)
-%EXTRACTFEATURE Extracts the features from the scores 
+%EXTRACTFEATURE Extracts the features from the scores
 %   The function extracts the features from the SymbTr-txt scores for
 %   phrase segmentation. It can accept a single SymbTr-score or a folder
 %   with multiple scores. By default the output is written to a file in the
-%   same directory with the same name of the SymbTr-score and an extension 
-%   of ".ptxt". The user can overwrite the file path if the input is a 
+%   same directory with the same name of the SymbTr-score and an extension
+%   of ".ptxt". The user can overwrite the file path if the input is a
 %   single file or the folder path if the input is a folder.
 %   Inputs:
-%       in: The path of a single SymbTr-txt score or a directory 
+%       in: The path of a single SymbTr-txt score or a directory
 %           containing multiple SymbTr-scores
 %       boundStat: The phrase boundary distributions on the training
 %           dataset computed by learnBoundStat. It can be given as a struct
@@ -24,7 +24,7 @@ function [feature_files, feature] = extractFeature(in, boundStat, ...
 %
 %   Sertan Senturk, 2 December 2012
 %   Universitat Pompeu Fabra
-%   email: sertan.senturk@upf.edu 
+%   email: sertan.senturk@upf.edu
 %% I/O
 if ~exist('out', 'var')
     out = '';
@@ -46,7 +46,9 @@ function feature = extractFeatureFile(symbTrFile, boundStat, usulFile)
 % absolute to avoid path problems
 
 % load boundary stats
-if exist(boundStat, 'file')
+if isstruct(boundStat)
+    % pass
+elseif exist(boundStat, 'file')
     boundStat = load(boundStat);
 end
 makamHist = boundStat.makamHist;
@@ -104,6 +106,11 @@ else % output given
         end
         outfiles = out;
     end
+    
+    if ischar(outfiles) % single file
+        outfiles = {outfiles};
+    end
+    
     if ~exist(fileparts(outfiles{1}), 'dir') % make sure the folder exist
         status = mkdir(fileparts(outfiles{1}));
         if ~status
@@ -111,8 +118,5 @@ else % output given
                 'cannot be created. Check the write permisions.'])
         end
     end
-end
-if ischar(outfiles) % single file
-    outfiles = {outfiles};
 end
 end
