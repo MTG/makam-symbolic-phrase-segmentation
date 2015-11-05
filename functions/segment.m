@@ -1,4 +1,4 @@
-function [bound_files, bound] = segment(in, FLDmodel, out)
+function [bound_files, bound, boundary_noteIdx]=segment(in, FLDmodel, out)
 % SEGMENT segments the score according to the training model.
 %   The function reads the feature files (files with .ptxt by defauls)
 %   extracted from the score and automatically returns the estimated
@@ -40,11 +40,8 @@ for k = 1:numel(indata)
     [bound{k}, boundary_noteIdx{k}] = autoMelodicSegmentation(indata{k},...
         FLDmodel);
     
-    fid=fopen(bound_files{k},'w+t');
-    for m=1:length(bound{k})
-        fprintf(fid,'%4.4f\t%d\r\n', bound{k}(m), boundary_noteIdx{k}(m));
-    end
-    [~] = fclose(fid);
+    [~] = external.jsonlab.savejson('',struct('boundary_beat', bound{k},...
+        'boundary_noteIdx', boundary_noteIdx{k}), bound_files{k});
 end
 end
 
