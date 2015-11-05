@@ -4,7 +4,7 @@ makam-symbolic-phrase-segmentation
 Automatic Phrase Segmentation on symbolic scores for Ottoman-Turkish makam music
 
 -----------------------------------------------------------------
-This is a fork of the automatic phrase segmentation algorithm hosted in http://akademik.bahcesehir.edu.tr/~bbozkurt/112E162.html. This repository is created with the consent of the members of the project. The aim of this fork is to modularize and package the MATLAB code into standalone binaries usable in other research tools (and mainly in [Dunya](https://github.com/MTG/dunya)). You can access the original code and additional sources such as the expert annotations from the original site.
+This is a fork of the automatic phrase segmentation algorithm hosted in http://akademik.bahcesehir.edu.tr/~bbozkurt/112E162.html. This repository is created with the consent of the members of the project. The aim of this fork is to modularize and package the MATLAB code into a standalone binary usable in other research tools (and mainly in [Dunya](https://github.com/MTG/dunya)). You can access the original code and additional sources such as the expert annotations from the original site.
 
 Please cite the following paper, if you are using the code or the data available in the web page expalined above.
 
@@ -12,7 +12,7 @@ B. Bozkurt, M. K. Karaosmanoglu, B. Karacali, E. Unal, Usul and Makam driven aut
 
 Usage 
 ------------------------------------------------------------------
-You can use the tool either from the MATLAB itself, or by calling the MATLAB binaries provided. For the calls, refer to the phraseSeg_matlab_demo.m and phraseSeg_mcr_demo.sh, respectively. 
+You can use the tool either from the MATLAB itself, or by calling the MATLAB binaries provided. Refer to the phraseSeg_matlab_demo.m and phraseSeg_mcr_demo.sh, respectively, for how to call the code.
 
 If you want to work on/observe how each individual step is called refer to individual_functions_demo.m.
 
@@ -20,7 +20,7 @@ Installation
 ------------------------------------------------------------------
 If you want to use the binary, you need to install [MATLAB Runtime](http://www.mathworks.com/products/compiler/mcr/?refresh=true). Make you download and install the version R2015a. The binary will not work with other runtime versions!
 
-If you are cloning the git repository, don't forget to (initialize and update the submodules)[https://git-scm.com/book/en/v2/Git-Tools-Submodules]. 
+If you are cloning the git repository, don't forget to [initialize and update the submodules](https://git-scm.com/book/en/v2/Git-Tools-Submodules). 
 
 Additional Material
 ------------------------------------------------------------------
