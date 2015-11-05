@@ -19,6 +19,6 @@ disp('- Training the model from manual segmentations in the training set...')
 [~] = phraseSeg('train', features, FLDmodelFile);
 
 %% completed
-disp('- Training completed complete!')
+disp('- Training complete!')
 
 end
