@@ -3,9 +3,10 @@
 *.ptxt
 *.mat
 *.autoSeg
+sampleData/tmp/
 
 # autosave
 *.*~
 
 # matlab compiler
-phraseSeg/*
+phraseSegPkg

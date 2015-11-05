@@ -1,5 +1,5 @@
 <deployment-project plugin="plugin.ezdeploy" plugin-version="1.0">
-  <configuration build-checksum="3414273882" file="/home/sertansenturk/Documents/notaIcra/code/makam-symbolic-phrase-segmentation/phraseSeg.prj" location="/home/sertansenturk/Documents/notaIcra/code/makam-symbolic-phrase-segmentation" name="phraseSeg" preferred-package-location="/home/sertansenturk/Documents/notaIcra/code/makam-symbolic-phrase-segmentation/phraseSeg/for_redistribution" preferred-package-type="package.type.install" target="target.ezdeploy.standalone" target-name="Application Compiler">
+  <configuration build-checksum="3213960400" file="/home/sertansenturk/Documents/notaIcra/code/makam-symbolic-phrase-segmentation/phraseSeg.prj" location="/home/sertansenturk/Documents/notaIcra/code/makam-symbolic-phrase-segmentation" name="phraseSeg" preferred-package-location="/home/sertansenturk/Documents/notaIcra/code/makam-symbolic-phrase-segmentation/phraseSegPkg/for_redistribution" preferred-package-type="package.type.install" target="target.ezdeploy.standalone" target-name="Application Compiler">
     <param.appname>phraseSeg</param.appname>
     <param.icon />
     <param.icons />
@@ -16,9 +16,9 @@
     <param.installpath.combo>option.installpath.user</param.installpath.combo>
     <param.logo />
     <param.install.notes />
-    <param.intermediate>${PROJECT_ROOT}/phraseSeg/for_testing</param.intermediate>
-    <param.files.only>${PROJECT_ROOT}/phraseSeg/for_redistribution_files_only</param.files.only>
-    <param.output>${PROJECT_ROOT}/phraseSeg/for_redistribution</param.output>
+    <param.intermediate>${PROJECT_ROOT}/phraseSegPkg/for_testing</param.intermediate>
+    <param.files.only>${PROJECT_ROOT}/phraseSegPkg/for_redistribution_files_only</param.files.only>
+    <param.output>${PROJECT_ROOT}/phraseSegPkg/for_redistribution</param.output>
     <param.enable.clean.build>false</param.enable.clean.build>
     <param.user.defined.mcr.options />
     <param.embed.ctf>true</param.embed.ctf>
@@ -53,9 +53,6 @@
       <param.installpath.string />
       <param.installpath.combo />
       <param.logo />
-      <param.intermediate />
-      <param.files.only />
-      <param.output />
       <param.enable.clean.build />
       <param.user.defined.mcr.options />
       <param.embed.ctf />
@@ -86,10 +83,10 @@
     </fileset.resources>
     <fileset.package />
     <build-deliverables>
-      <file location="${PROJECT_ROOT}/phraseSeg/for_testing" name="splash.png" optional="false">/home/sertansenturk/Documents/notaIcra/code/makam-symbolic-phrase-segmentation/phraseSeg/for_testing/splash.png</file>
-      <file location="${PROJECT_ROOT}/phraseSeg/for_testing" name="run_phraseSeg.sh" optional="false">/home/sertansenturk/Documents/notaIcra/code/makam-symbolic-phrase-segmentation/phraseSeg/for_testing/run_phraseSeg.sh</file>
-      <file location="${PROJECT_ROOT}/phraseSeg/for_testing" name="phraseSeg" optional="false">/home/sertansenturk/Documents/notaIcra/code/makam-symbolic-phrase-segmentation/phraseSeg/for_testing/phraseSeg</file>
-      <file location="${PROJECT_ROOT}/phraseSeg/for_testing" name="readme.txt" optional="true">/home/sertansenturk/Documents/notaIcra/code/makam-symbolic-phrase-segmentation/phraseSeg/for_testing/readme.txt</file>
+      <file location="${PROJECT_ROOT}/phraseSegPkg/for_testing" name="phraseSeg" optional="false">/home/sertansenturk/Documents/notaIcra/code/makam-symbolic-phrase-segmentation/phraseSegPkg/for_testing/phraseSeg</file>
+      <file location="${PROJECT_ROOT}/phraseSegPkg/for_testing" name="readme.txt" optional="true">/home/sertansenturk/Documents/notaIcra/code/makam-symbolic-phrase-segmentation/phraseSegPkg/for_testing/readme.txt</file>
+      <file location="${PROJECT_ROOT}/phraseSegPkg/for_testing" name="run_phraseSeg.sh" optional="false">/home/sertansenturk/Documents/notaIcra/code/makam-symbolic-phrase-segmentation/phraseSegPkg/for_testing/run_phraseSeg.sh</file>
+      <file location="${PROJECT_ROOT}/phraseSegPkg/for_testing" name="splash.png" optional="false">/home/sertansenturk/Documents/notaIcra/code/makam-symbolic-phrase-segmentation/phraseSegPkg/for_testing/splash.png</file>
     </build-deliverables>
     <workflow />
     <matlab>

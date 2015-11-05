@@ -3,43 +3,42 @@ makam-symbolic-phrase-segmentation
 
 Automatic Phrase Segmentation on symbolic scores for Ottoman-Turkish makam music
 
-
-
-
-
-Türk Makam Müziği ezgi bölütleme Matlab araçları derlemesi
-Barış Bozkurt, Bilge Karaçalı, M. Kemal Karaosmanoğlu
 -----------------------------------------------------------------
-Bu araç kullanıcıya Bahcesehir Universitesi'nin sağladığı site üzerinden sunulmuştur.
+This is a fork of the automatic phrase segmentation algorithm hosted in http://akademik.bahcesehir.edu.tr/~bbozkurt/112E162.html. This repository is created with the consent of the members of the project. The aim of this fork is to modularize and package the MATLAB code into standalone binaries usable in other research tools (and mainly in [Dunya](https://github.com/MTG/dunya)). You can access the original code and additional sources such as the expert annotations from the original site.
 
-Bu araçları indirecek kullanıcı aşağıdaki koşullara uymayı kabul 
-eder.
-
-Bu derlemede sunulan araçlar:
-- Ticari amaçla kullanılamaz: satılamaz, ticari bir ürün içerisinde veya ticari bir ürünün oluşturulmasında kullanılamaz.
-- Dağıtım yetkisi sadece yazarlara aittir.  Kullanıcı dosyaları sadece araştırma amaçlı olarak kişisel kullanım için indirebilir, başka bir servis sunucu üzerinden paylaşıma açamaz. 
-- Kullanılırken oluşan tüm riskler kullanıcıya aittir.
-
-Burada sunulan araçlar hiçbir ticari amaç güdülmeden kullanıma açılmıştır. Hazırlanmasına emek  harcayanlar bunun karşılığında 
-araçların kullanıldığı yerlerde ve sonuçlandırılan çalışmaların rapor ve makalelerinde  aşağıda belirtilen makaleye referans verilmesini beklemektedirler:
+Please cite the following paper, if you are using the code or the data available in the web page expalined above.
 
 B. Bozkurt, M. K. Karaosmanoglu, B. Karacali, E. Unal, Usul and Makam driven automatic melodic segmentation for Turkish music, submitted to Journal of New Music Research, 2013.
 
-Dağıtım adresi: 
-http://akademik.bahcesehir.edu.tr/~bbozkurt/112E162.html
-
-TESEKKUR
-Bu araçlar, TUBITAK tarafından desteklenen 112E162 numaralı 1001 araştırma projesinde oluşturulmuştur. 
-
+Usage 
 ------------------------------------------------------------------
-Istanbul                                               Subat, 2014
+You can use the tool either from the MATLAB itself, or by calling the MATLAB binaries provided. For the calls, refer to the phraseSeg_matlab_demo.m and phraseSeg_mcr_demo.sh, respectively. 
+
+If you want to work on/observe how each individual step is called refer to individual_functions_demo.m.
+
+Installation
 ------------------------------------------------------------------
+If you want to use the binary, you need to install [MATLAB Runtime](http://www.mathworks.com/products/compiler/mcr/?refresh=true). Make you download and install the version R2015a. The binary will not work with other runtime versions!
 
-Kullanımla ilgili özet bilgiler: 
+If you are cloning the git repository, don't forget to (initialize and update the submodules)[https://git-scm.com/book/en/v2/Git-Tools-Submodules]. 
 
-Kullanıcı “train_applySegmentation.m” fonksiyonunda bütün veri isleme adımlarını bulabilir. 
+Additional Material
+------------------------------------------------------------------
+This tool uses [MIDI Toolbox](https://www.jyu.fi/hum/laitokset/musiikki/en/research/coe/materials/miditoolbox) internally for computing the features using LBDM and Tenney-Polansky algoritms. 
 
-Kullanıma başlamadan once MIDI Toolbox: https://www.jyu.fi/hum/laitokset/musiikki/en/research/coe/materials/miditoolbox indirilip kurulmalıdır çünkü bu araç kutusu içerisinden LBDM ve Tenney-Polansky algoritmaları öznitelik hesaplarında kullanılmaktadır. 
+For json reading/writing, the code uses Sertan Senturk's [jsonlab](https://github.com/sertansenturk/jsonlab) fork. 
 
-“train_applySegmentation.m” fonksiyonun üst satırında belirtilen klasör bilgilerini kendi bilgisayarındaki klasör bilgileriyle değiştiren kullanıcı bu fonksiyonu çağırdığında öğrenme, test ve uygulama adımların hepsinin uygulamasını yapabilecektir. Önerimiz ilk testlerin bu klasör içerisinde bulunan sampleData klasöründe sunulmuş verilerle yapılmasıdır. 
+Contributors
+------------------------------------------------------------------
+Maintainer:
+- Sertan Şentürk (contact AT sertansenturk DOT com)
 
+Original code:
+- Barış Bozkurt
+- Kemal Karaosmanoğlu
+- Bilge Karaçalı
+- Erdem Ünal
+
+Acknowledgements
+------------------------------------------------------------------
+The original work is supported by the Scientific and Technological Research Council of Turkey, TÜBITAK, Grant [112E162]. This fork was created within the work partly supported by the European Research Council under the European Union’s Seventh Framework Program, as part of the CompMusic project (ERC grant agreement 267583).
