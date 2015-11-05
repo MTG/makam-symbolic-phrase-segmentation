@@ -1,5 +1,5 @@
 <deployment-project plugin="plugin.ezdeploy" plugin-version="1.0">
-  <configuration build-checksum="2124531870" file="/home/sertansenturk/Documents/notaIcra/code/makam-symbolic-phrase-segmentation/phraseSeg.prj" location="/home/sertansenturk/Documents/notaIcra/code/makam-symbolic-phrase-segmentation" name="phraseSeg" preferred-package-location="/home/sertansenturk/Documents/notaIcra/code/makam-symbolic-phrase-segmentation/phraseSeg/for_redistribution" preferred-package-type="package.type.install" target="target.ezdeploy.standalone" target-name="Application Compiler">
+  <configuration build-checksum="4022742860" file="/home/sertansenturk/Documents/notaIcra/code/makam-symbolic-phrase-segmentation/phraseSeg.prj" location="/home/sertansenturk/Documents/notaIcra/code/makam-symbolic-phrase-segmentation" name="phraseSeg" preferred-package-location="/home/sertansenturk/Documents/notaIcra/code/makam-symbolic-phrase-segmentation/phraseSeg/for_redistribution" preferred-package-type="package.type.install" target="target.ezdeploy.standalone" target-name="Application Compiler">
     <param.appname>phraseSeg</param.appname>
     <param.icon />
     <param.icons />
