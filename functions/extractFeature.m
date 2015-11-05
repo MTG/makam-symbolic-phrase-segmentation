@@ -36,8 +36,10 @@ end
 feature = cell(numel(infiles),1);
 for k = 1:numel(infiles)
     feature{k} = extractFeatureFile(infiles{k}, boundStat, usulFile);
-    dlmwrite(feature_files{k},feature{k},'delimiter','\t','precision',...
-        '%.4f');
+    if ~isempty(feature_files)
+        dlmwrite(feature_files{k},feature{k},'delimiter','\t',...
+            'precision','%.4f');
+    end
 end
 end
 
@@ -90,8 +92,7 @@ else
 end
 
 if isempty(out) % out not defined
-    % save 2 same filename w a different extension in the same folder
-    outfiles = strrep(infiles,'.txt','.ptxt');
+    outfiles = '';
 else % output given
     % check if the out is defined as a folder or file
     [~,~,ext] = fileparts(out);

@@ -24,8 +24,8 @@ testFeatureFile = fullfile(testFeatureFolder, 'hicaz--sarki--aksak--beni_canimda
 testSegmentFile = fullfile(testSegmentFolder, 'hicaz--sarki--aksak--beni_canimdan--muzaffer_ilkar.autoSeg');
 
 %% training
-phraseSeg('trainWrapper', trainFolder, boundStatFile, ...
-    trainFeatureFolder, FLDmodelFile)
+phraseSeg('trainWrapper', trainFolder, boundStatFile, FLDmodelFile)
+
 %% segmentation
 phraseSeg('segmentWrapper', boundStatFile, FLDmodelFile, testFile, ...
-    testFeatureFile, testSegmentFile)
+    testSegmentFile)

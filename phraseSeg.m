@@ -5,7 +5,7 @@ function varargout = phraseSeg(varargin)
 %   segmentation. It allows the user to call the corresponding functions
 %   without specifying the location of the usul and note dictionaries. The
 %   user simply has to specify the input file/folder for each step and the
-%   output file/folders if desired. 
+%   output file/folders if desired.
 %
 %   Example call:
 %       phraseSeg('segment', testFolder, FLDmodelFile, outFolder)
@@ -16,8 +16,8 @@ function varargout = phraseSeg(varargin)
 %
 %       run_mcr.sh phraseSeg segment testFolder FLDmodelFile outFolder
 %
-% learnBoundStat .................. Learn boundary statistics 
-%       Inputs: 
+% learnBoundStat .................. Learn boundary statistics
+%       Inputs:
 %           trainScoresFolder       The folder, which has the annotated
 %                                   scores for training
 %           [boundStatFile]         The file where the boundary statistics
@@ -25,21 +25,21 @@ function varargout = phraseSeg(varargin)
 %       Outputs:
 %           boundStatFile           The file where the boundary statistics
 %                                   are saved. It is the boundStatFile
-%                                   input if specified, else it is 
+%                                   input if specified, else it is
 %                                   "trainScoresFolder/boundStat.mat"
 % extractFeature .................. Feature Extraction
-%       Inputs: 
+%       Inputs:
 %           (scoreFolder/scoreFile) The folder with scores or a single
 %                                   score to extract features
 %           boundStatFile:          The mat file with saved boundary stats
-%           [outFolder/outFile]     The folder to save the features or a 
-%                                   filename to save the feature of a 
+%           [outFolder/outFile]     The folder to save the features or a
+%                                   filename to save the feature of a
 %                                   single score input
 %       Outputs:
 %           featureFiles            The paths for the saved feature files
 %           feature                 the extracted features
 % train ........................... Training
-%       Inputs: 
+%       Inputs:
 %           trainFeatureFolder      The folder, which has the features
 %                                   extracted from the trained scores
 %           [FLDmodelFile]          The file where the training model is
@@ -55,40 +55,40 @@ function varargout = phraseSeg(varargin)
 %           (testFeatureFolder/     the .ptxt feature file associated with
 %              testFeatureFile)     a SymbTr file or a folder containing
 %                                   multiple .ptxt files
-%           FLDmodelFile            the segmentation model (or the file 
+%           FLDmodelFile            the segmentation model (or the file
 %                                   which the model is saved)
-%           [outFolder/outFile]     the .autoSeg file associated with a 
-%                                   SymbTr file or a folder where .autoSeg 
+%           [outFolder/outFile]     the .autoSeg file associated with a
+%                                   SymbTr file or a folder where .autoSeg
 %                                   files will be saved for multiple SymbTr
 %       Outputs:
 %           bound_files             the paths of the files where the
-%                                   automatic segmentation boundaries are 
+%                                   automatic segmentation boundaries are
 %                                   stored
 %           bound                   the segmentation boundaries
 % evaluate ........................ Evaluation
 %       Inputs:
 %           trainFeatureFolder      the path to the directory with the
-%                                   score feature files extracted from the 
+%                                   score feature files extracted from the
 %                                   scores used for training
-%           outFile                 the path to save the evaluation results 
-%                   
-%           plotRoc                 boolean to plot the region of 
+%           outFile                 the path to save the evaluation results
+%
+%           plotRoc                 boolean to plot the region of
 %                                   convergence or not
 %       Outputs:
-%           outFile                 the path where evaluation results is 
+%           outFile                 the path where evaluation results is
 %                                   saved. Default is
 %                                   "trainFeatureFolder/results.mat"
 %           results:                the evaluation results
 % There are also some additional functions:
-% test ............................ Test run 
+% test ............................ Test run
 %       It can be used to check whether the code works without any
 %       problems.
-%       Inputs: 
+%       Inputs:
 %           - none -
-%       Outputs: 
+%       Outputs:
 %           - none (will display success message on completion) -
 % getSegments .................. Get the manually annotated segmentations
-%       Inputs: 
+%       Inputs:
 %           trainScoresFolder       The folder, which has the annotated
 %                                   scores
 %           [segmentationsFolder]   The folder to save the segment
@@ -96,14 +96,14 @@ function varargout = phraseSeg(varargin)
 %       Outputs:
 %           annotatedSegmentFiles   The files where the annotated segment
 %                                   boundaries are saved. The basefolder is
-%                                   the segmentationsFolder if specified 
+%                                   the segmentationsFolder if specified
 %                                   else it's the annotatedScoresFolder.
 %                                   The filename is the same with the score
 %                                   name, with an extension ".seg"
-%  
+%
 %   Sertan Senturk, 2 December 2013
 %   Universitat Pompeu Fabra
-%   email: sertan.senturk@upf.edu 
+%   email: sertan.senturk@upf.edu
 inputErr = false;
 
 %% I/O
@@ -115,12 +115,20 @@ noteTableFile = fullfile('makamdata','noteTable.txt');
 switch varargin{1}
     case 'unitTest'
         if nargin > 1; inputErr = true; else unitTest(); end
-    case 'wrapper'
-        if nargin ~= 8; inputErr = true; else wrapper(varargin{2:end}); end
     case 'trainWrapper'
-        if nargin ~= 5; inputErr = true; else trainWrapper(varargin{2:end}); end
+        switch nargin
+            case {4, 5}
+                trainWrapper(varargin{2:end});
+            otherwise
+                inputErr = true;
+        end
     case 'segmentWrapper'
-        if nargin ~= 6; inputErr = true; else segmentWrapper(varargin{2:end}); end
+        switch nargin
+            case {5, 6}
+                segmentWrapper(varargin{2:end});
+            otherwise
+                inputErr = true;
+        end
     case 'getSegments' % extract segments in a SymbTrFile
         switch nargin
             case {2, 3}
@@ -180,9 +188,8 @@ end
 if inputErr
     errstr = ['Wrong inputs! \n'...
         'Usage: \n'...
-        '  Training Wrapper ............ "trainWrapper trainFolder boundStatFile trainFeatureFolder FLDmodelFile" \n'...
-        '  Segmentation Wrapper ............ "segmentWrapper boundStatFile FLDmodelFile testFolder testFeatureFolder testSegmentFolder" \n'...
-        '  Complete Wrapper ............ "wrapper trainFolder boundStatFile trainFeatureFolder FLDmodelFile testFolder testFeatureFolder testSegmentFolder" \n'...
+        '  Training Wrapper ................ "trainWrapper trainFolder boundStatFile FLDmodelFile (trainFeatureFolder)" \n'...
+        '  Segmentation Wrapper ............ "segmentWrapper boundStatFile FLDmodelFile testFolder testSegmentFolder (testFeatureFolder)" \n'...
         'Individual functions: \n'...
         '  Learn boundary statistics ....... "learnBoundStat noteTableFile [outFile]" \n'...
         '  Feature Extraction............... "extractFeature (scoreFolder/scoreFile) boundStatFile [outFolder/outFile]" \n'...
@@ -196,7 +203,7 @@ if inputErr
 end
 
 %% outputs
-if ~ismember(varargin{1}, {'unitTest', 'wrapper', 'trainWrapper', 'segmentWrapper'})
+if ~ismember(varargin{1}, {'unitTest', 'trainWrapper', 'segmentWrapper'})
     if iscell(file) % multiple files were processed
         varargout{1} = char(GetFullPath(file(:)));
     else
