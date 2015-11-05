@@ -1,5 +1,5 @@
 <deployment-project plugin="plugin.ezdeploy" plugin-version="1.0">
-  <configuration build-checksum="2743006372" file="/home/sertansenturk/Documents/notaIcra/code/makam-symbolic-phrase-segmentation/phraseSeg.prj" location="/home/sertansenturk/Documents/notaIcra/code/makam-symbolic-phrase-segmentation" name="phraseSeg" preferred-package-location="/home/sertansenturk/Documents/notaIcra/code/makam-symbolic-phrase-segmentation/phraseSeg/for_redistribution" preferred-package-type="package.type.install" target="target.ezdeploy.standalone" target-name="Application Compiler">
+  <configuration build-checksum="2124531870" file="/home/sertansenturk/Documents/notaIcra/code/makam-symbolic-phrase-segmentation/phraseSeg.prj" location="/home/sertansenturk/Documents/notaIcra/code/makam-symbolic-phrase-segmentation" name="phraseSeg" preferred-package-location="/home/sertansenturk/Documents/notaIcra/code/makam-symbolic-phrase-segmentation/phraseSeg/for_redistribution" preferred-package-type="package.type.install" target="target.ezdeploy.standalone" target-name="Application Compiler">
     <param.appname>phraseSeg</param.appname>
     <param.icon />
     <param.icons />
@@ -75,6 +75,11 @@
       <file>${PROJECT_ROOT}/phraseSeg.m</file>
     </fileset.main>
     <fileset.resources>
+      <file>${PROJECT_ROOT}/+external/+jsonlab/jsonopt.m</file>
+      <file>${PROJECT_ROOT}/+external/+jsonlab/loadjson.m</file>
+      <file>${PROJECT_ROOT}/+external/+jsonlab/mergestruct.m</file>
+      <file>${PROJECT_ROOT}/+external/+jsonlab/savejson.m</file>
+      <file>${PROJECT_ROOT}/+external/+jsonlab/varargin2struct.m</file>
       <file>${PROJECT_ROOT}/functions</file>
       <file>${PROJECT_ROOT}/makamdata</file>
       <file>${PROJECT_ROOT}/sampleData</file>
