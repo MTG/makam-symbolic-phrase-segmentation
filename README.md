@@ -26,7 +26,7 @@ Additional Material
 ------------------------------------------------------------------
 This tool uses [MIDI Toolbox](https://www.jyu.fi/hum/laitokset/musiikki/en/research/coe/materials/miditoolbox) internally for computing the features using LBDM and Tenney-Polansky algoritms. 
 
-For json reading/writing, the code uses Sertan Senturk's [jsonlab](https://github.com/sertansenturk/jsonlab) fork. 
+For json reading/writing, the code uses Sertan Şentürk's [jsonlab](https://github.com/sertansenturk/jsonlab) fork. 
 
 Contributors
 ------------------------------------------------------------------
