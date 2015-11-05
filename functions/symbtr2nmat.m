@@ -8,9 +8,6 @@ function [NM, segment, noteIndex] = symbtr2nmat(filepath, filename, usulFile)
 %   Addendum:   Now process SymbTr files coming from Mus2, which includes
 %               the word "Es" for rests.
 
-if ~exist('usulFile', 'var')
-
-end
 u                       = regexp(filename, '--', 'split');
 usulName                = u(3);
 [~, mertebe]            = findTime_mertebe(usulName, usulFile);
