@@ -1,0 +1,3 @@
+[submodule "+external/+jsonlab"]
+	path = +external/+jsonlab
+	url = https://github.com/sertansenturk/jsonlab.git
