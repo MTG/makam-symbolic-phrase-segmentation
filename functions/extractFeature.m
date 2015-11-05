@@ -93,7 +93,8 @@ elseif exist(in, 'file') % file
     try  % json file
         infiles = cell2mat(external.jsonlab.loadjson(in));
     catch
-        infiles = {in};
+        [~, name] = fileparts(in);
+        infiles = struct('path', in, 'name', name);
     end
 else
     error('parseIO:input', 'Input should be a folder or a symbTr file')
