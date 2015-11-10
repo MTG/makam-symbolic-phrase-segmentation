@@ -17,7 +17,8 @@ syn                     = removeRests(syn);
 syn                     = removeConsecutiveBounds(syn);
 syn                     = computeCums(syn, mertebe);
 [NM, segment, noteIndex]= extractInfo(syn, mertebe, gecki);
-[segment]               = beatCheck(NM, segment);
+segment                 = beatCheck(NM, segment);
+segment                 = boundCheck(segment, filename);
 end
 
 function [syn, gecki] = readSymbTr(fileName)
@@ -41,8 +42,8 @@ gecki = C{12}(syn(:,2) == 54);
 end
 
 function [syn] = computeCums(syn, mertebe)
-% Kumulatif ms ve beat'leri hesaplayip diziye yazar
-% Computes the cumulative ms and beats and writes it to an array
+% Kumulatif sec ve beat'leri hesaplayip diziye yazar
+% Computes the cumulative sec and beats and writes it to an array
 gecMert = mertebe;
 syn(:,  10) = 0;
 syn(:, 11) = 0;
@@ -125,7 +126,7 @@ end
 function [NM, segment, noteIndex]= extractInfo(syn, mertebe, gecki)
 geckInd = 1;
 NM    = [];
-segment = struct('kod', 0, 'beat', 0, 'ms', 0, 'noteIndex', 0,'comment', ' ');
+segment = struct('kod', 0, 'beat', 0, 'sec', 0, 'noteIndex', 0,'comment', ' ');
 bInd  = 0;
 nInd  = 0;
 noteIndex = [];
@@ -138,14 +139,14 @@ for k = 1 : size(syn, 1) - 1
         segment(bInd).kod      = syn(k, 2);
         segment(bInd).noteIndex= syn(k, 1);
         segment(bInd).beat     = round(2 * mertebe * syn(k + 1, 11)) / (2 * mertebe);
-        segment(bInd).ms       = round(syn(k + 1, 10) / 500) / 2;
+        segment(bInd).sec       = round(syn(k + 1, 10) / 500) / 2;
         if segment(bInd).kod == 54
             segment(bInd).comment = gecki(geckInd);
             geckInd = geckInd + 1;
         end
         if k < size(syn, 1) - 1
             if syn(k + 1, 4) == -1
-                segment(bInd).ms   = syn(k + 2, 10) / 1000;
+                segment(bInd).sec   = syn(k + 2, 10) / 1000;
                 segment(bInd).beat = round(2 * syn(k + 2, 11)) / 2;
             end
         end
@@ -176,14 +177,14 @@ bInd = bInd + 1;
 segment(bInd).kod  = 53;
 segment(bInd).noteIndex= syn(end, 1);
 segment(bInd).beat = round(2 * mertebe * syn(end, 11)) / (2 * mertebe);
-segment(bInd).ms   = round(syn(end, 10) / 500) / 2;
+segment(bInd).sec   = round(syn(end, 10) / 500) / 2;
 NM(:, 3) = 1; %Chan
 end
 
-function [bolut] = beatCheck(NM, bolut)
+function segment = beatCheck(NM, segment)
 % NM'de bulunmayan beat'leri duzeltir
-for k = 1 : length(bolut) - 1
-    idx = find(NM >= bolut(k).beat, 1);
+for k = 1 : length(segment) - 1
+    idx = find(NM >= segment(k).beat, 1);
     if isempty(idx)
         idx = size(NM, 1);
     else
@@ -192,9 +193,29 @@ for k = 1 : length(bolut) - 1
         end
     end
     if (idx <= size(NM, 1))
-        bolut(k).beat = NM(idx, 1);
+        segment(k).beat = NM(idx, 1);
     else
-        bolut(k).beat = NM(size(NM, 1), 1);
+        segment(k).beat = NM(size(NM, 1), 1);
     end
 end
+end
+
+function segment = boundCheck(segment, filename)
+    for ss = numel(segment):-1:2
+        if ss == numel(segment)
+            if segment(ss).noteIndex - segment(ss-1).noteIndex < 2
+                warning('symbtr2nmat:closeBorder', [filename ...
+                    ', note: ' num2str(segment(ss-1).noteIndex) '-' ...
+                    num2str(segment(ss).noteIndex) '. Merging segments'])
+                segment(ss-1) = [];
+            end
+        else
+            if segment(ss).noteIndex - segment(ss-1).noteIndex < 2
+                warning('symbtr2nmat:closeBorder', [filename ...
+                    ', note: ' num2str(segment(ss-1).noteIndex) '-' ...
+                    num2str(segment(ss).noteIndex) '. Merging segments'])
+                segment(ss) = [];
+            end
+        end
+    end
 end

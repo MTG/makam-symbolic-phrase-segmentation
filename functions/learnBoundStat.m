@@ -137,7 +137,7 @@ for k=1:length(filepaths)
     % bolutlerin denk geldigi beat histogrami hesabi
     % Computation of the boundary distribution with respect to usul beats
     for bind = 1 : length(segment)
-        if segment(bind).ms ~= 0
+        if segment(bind).sec ~= 0
             % The shortest note can be 1/64, triole => 3 * 64 = 192
             %                    n = 1 + floor(mod(192 * seg(k), zaman));
             n = 1 + floor(mod(segment(bind).beat*2, usulHist(usulInd).timeMertebe(1)*2));
