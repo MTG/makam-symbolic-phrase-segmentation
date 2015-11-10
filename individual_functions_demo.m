@@ -28,8 +28,8 @@ testDbaFolder = fullfile(p, 'sampleData', 'test');
 % isim degiskenlerini duzeltin
 % if you want to save your outputs to different locations, change the
 % file/folder variables below accordingly
-outTrainFolder = fullfile(p, 'sampleData', 'train_out');
-outTestFolder = fullfile(p, 'sampleData', 'test_out');
+outTrainFolder = fullfile(p, 'sampleData', 'out', 'train');
+outTestFolder = fullfile(p, 'sampleData', 'out', 'test');
 
 boundStatFile = fullfile(outTrainFolder,'boundStat.mat');
 FLDmodelFile = fullfile(outTrainFolder,'FLDmodel.mat');

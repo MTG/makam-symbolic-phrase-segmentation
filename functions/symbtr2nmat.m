@@ -12,8 +12,9 @@ u                       = regexp(filename, '--', 'split');
 usulName                = u(3);
 [~, mertebe]            = findTime_mertebe(usulName, usulFile);
 [syn, gecki]            = readSymbTr(filepath);
-[syn]                   = computeCums(syn, mertebe);
-[syn]                   = removeRests(syn, mertebe);
+syn                     = removeRests(syn);
+syn                     = removeConsecutiveBounds(syn);
+syn                     = computeCums(syn, mertebe);
 [NM, segment, noteIndex]= extractInfo(syn, mertebe, gecki);
 [segment]               = beatCheck(NM, segment);
 end
@@ -61,20 +62,17 @@ for k = 2 : size(syn, 1)
 end
 end
 
-function [syn] = removeRests(syn, ~)
-k = 2;
-while k <= size(syn, 1) - 1;
+function syn = removeRests(syn)
+k = size(syn, 1);
+while k > 1
     if (syn(k, 3) < 0) || (syn(k, 4) < 0) % Rest
         if (51 <= syn(k - 1, 2) && syn(k - 1, 2) <= 55)
             syn = swapLines(syn, k);
-            if k > 2
-                syn = combineRest(syn, k - 1);
-            end
         else
             syn = combineRest(syn, k);
         end
     end
-    k = k + 1;
+    k = k - 1;
 end
 end
 
@@ -99,6 +97,18 @@ syn(k - 1, 8) = lns;
 syn(k, :) = [];
 end
 
+function syn = removeConsecutiveBounds(syn)
+k = size(syn,1);
+while k > 1
+    if (51 <= syn(k, 2) && syn(k, 2) <= 55)
+        if (51 <= syn(k - 1, 2) && syn(k - 1, 2) <= 55)
+            syn(k, :) = [];
+        end
+    end
+    k = k - 1;
+end
+end
+
 function [NM, segment, noteIndex]= extractInfo(syn, mertebe, gecki)
 geckInd = 1;
 NM    = [];
@@ -107,9 +117,10 @@ bInd  = 0;
 nInd  = 0;
 noteIndex = [];
 for k = 1 : size(syn, 1) - 1
-    if syn(k, 2) == 51
+    if syn(k, 2) == 51 % usul change
         mertebe = syn(k, 6);
     elseif syn(k, 2) == 53 || syn(k, 2) == 54 || syn(k, 2) == 55
+        % phrase boundary
         bInd = bInd + 1;
         segment(bInd).kod      = syn(k, 2);
         segment(bInd).noteIndex= syn(k, 1);
