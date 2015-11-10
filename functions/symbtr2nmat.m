@@ -12,6 +12,7 @@ u                       = regexp(filename, '--', 'split');
 usulName                = u(3);
 [~, mertebe]            = findTime_mertebe(usulName, usulFile);
 [syn, gecki]            = readSymbTr(filepath);
+syn                     = removeZeroDurNotes(syn);
 syn                     = removeRests(syn);
 syn                     = removeConsecutiveBounds(syn);
 syn                     = computeCums(syn, mertebe);
@@ -70,6 +71,18 @@ while k > 1
             syn = swapLines(syn, k);
         else
             syn = combineRest(syn, k);
+        end
+    end
+    k = k - 1;
+end
+end
+
+function syn = removeZeroDurNotes(syn)
+k = size(syn,1);
+while k > 1
+    if syn(k,7) == 0
+        if ~(51 <= syn(k, 2) && syn(k, 2) <= 55)
+            syn(k, :) = [];
         end
     end
     k = k - 1;
