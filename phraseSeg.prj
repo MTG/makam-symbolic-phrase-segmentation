@@ -1,5 +1,5 @@
 <deployment-project plugin="plugin.ezdeploy" plugin-version="1.0">
-  <configuration build-checksum="3213960400" file="/home/sertansenturk/Documents/notaIcra/code/makam-symbolic-phrase-segmentation/phraseSeg.prj" location="/home/sertansenturk/Documents/notaIcra/code/makam-symbolic-phrase-segmentation" name="phraseSeg" preferred-package-location="/home/sertansenturk/Documents/notaIcra/code/makam-symbolic-phrase-segmentation/phraseSegPkg/for_redistribution" preferred-package-type="package.type.install" target="target.ezdeploy.standalone" target-name="Application Compiler">
+  <configuration build-checksum="17633907" file="/home/sertansenturk/Documents/notaIcra/code/makam-symbolic-phrase-segmentation/phraseSeg.prj" location="/home/sertansenturk/Documents/notaIcra/code/makam-symbolic-phrase-segmentation" name="phraseSeg" preferred-package-location="/home/sertansenturk/Documents/notaIcra/code/makam-symbolic-phrase-segmentation/phraseSegPkg/for_redistribution" preferred-package-type="package.type.install" target="target.ezdeploy.standalone" target-name="Application Compiler">
     <param.appname>phraseSeg</param.appname>
     <param.icon />
     <param.icons />
@@ -102,7 +102,7 @@
       <vista>false</vista>
       <linux>true</linux>
       <solaris>false</solaris>
-      <osver>3.13.0-66-generic</osver>
+      <osver>3.13.0-67-generic</osver>
       <os32>false</os32>
       <os64>true</os64>
       <arch>glnxa64</arch>
