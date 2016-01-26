@@ -12,7 +12,9 @@ Barış Bozkurt, M. Kemal Karaosmanoğlu, Bilge Karaçalı, Erdem Ünal. Usul an
 
 Please cite the paper, if you are using the code or the data available in the web page explained below.
 
-This is a fork of the automatic phrase segmentation algorithm hosted in http://akademik.bahcesehir.edu.tr/~bbozkurt/112E162.html. This repository is created with the consent of the members of the project. The aim of this fork is to modularize and package the MATLAB code into a standalone binary usable in other research tools (and mainly in [Dunya](https://github.com/MTG/dunya)). The code is also optimized for speed and it performs considerably faster than the oroginal code. You can access the original code and additional sources such as the expert annotations from the original site.
+This is a fork of the automatic phrase segmentation algorithm hosted in http://akademik.bahcesehir.edu.tr/~bbozkurt/112E162.html. You can access the original code and additional sources such as the expert annotations from the original site.
+
+This repository is created with the consent of the members of the project. The aim of this fork is to modularize and package the MATLAB code into a standalone binary usable in other research tools (such as [Dunya](https://github.com/MTG/dunya)). The code is also optimized such that it performs considerably faster than the original code. 
 
 Usage 
 ------------------------------------------------------------------
@@ -28,9 +30,9 @@ If you are cloning the git repository, don't forget to [initialize and update th
 
 Training Scores
 ------------------------------------------------------------------
-The training scores can be downloaded from the (makam-symbolic-phrase-segmentation-dataset)[https://github.com/MTG/makam-symbolic-phrase-segmentation-dataset/releases/tag/v1.0] repository. The latest release has some minor changes from the original training score dataset such as UTF-8 encoding and duplicate file removal.
+The training scores can be downloaded from the [makam-symbolic-phrase-segmentation-dataset](https://github.com/MTG/makam-symbolic-phrase-segmentation-dataset/releases/tag/v1.0) repository. The latest release has some minor changes from the original training score dataset such as UTF-8 encoding and duplicate file removal.
 
-The original training scores can be also downloaded from (Barış Bozkurt's project site)[http://akademik.bahcesehir.edu.tr/~bbozkurt/112E162.html].
+The original training scores can be also downloaded from [Barış Bozkurt's project site](http://akademik.bahcesehir.edu.tr/~bbozkurt/112E162.html).
 
 Additional Code
 ------------------------------------------------------------------
@@ -40,7 +42,7 @@ For json reading/writing, the code uses Sertan Şentürk's [jsonlab](https://git
 
 Known Issues
 ------------------------------------------------------------------
-This version 
+The current release outputs slightly different results compared to Barış Bozkurt's original code (i.e. minor boundary insertions and deletions). We will release the first stable release when this [issue](#1) is fixed.
 
 AUTHORS
 ------------------------------------------------------------------
