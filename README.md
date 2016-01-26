@@ -3,12 +3,16 @@ makam-symbolic-phrase-segmentation
 
 Automatic Phrase Segmentation on symbolic scores for Ottoman-Turkish makam music
 
+Introduction
 -----------------------------------------------------------------
-This is a fork of the automatic phrase segmentation algorithm hosted in http://akademik.bahcesehir.edu.tr/~bbozkurt/112E162.html. This repository is created with the consent of the members of the project. The aim of this fork is to modularize and package the MATLAB code into a standalone binary usable in other research tools (and mainly in [Dunya](https://github.com/MTG/dunya)). You can access the original code and additional sources such as the expert annotations from the original site.
+This repository provides the implementation of makam and usul driven automatic phrase
+segmentation method proposed in:
 
-Please cite the following paper, if you are using the code or the data available in the web page expalined above.
+Barış Bozkurt, M. Kemal Karaosmanoğlu, Bilge Karaçalı, Erdem Ünal. Usul and Makam driven automatic melodic segmentation for Turkish music. Journal of New Music Research. Vol. 43, Iss. 4, 2014
 
-B. Bozkurt, M. K. Karaosmanoglu, B. Karacali, E. Unal, Usul and Makam driven automatic melodic segmentation for Turkish music, submitted to Journal of New Music Research, 2013.
+Please cite the paper, if you are using the code or the data available in the web page explained below.
+
+This is a fork of the automatic phrase segmentation algorithm hosted in http://akademik.bahcesehir.edu.tr/~bbozkurt/112E162.html. This repository is created with the consent of the members of the project. The aim of this fork is to modularize and package the MATLAB code into a standalone binary usable in other research tools (and mainly in [Dunya](https://github.com/MTG/dunya)). The code is also optimized for speed and it performs considerably faster than the oroginal code. You can access the original code and additional sources such as the expert annotations from the original site.
 
 Usage 
 ------------------------------------------------------------------
@@ -22,13 +26,23 @@ If you want to use the binary, you need to install [MATLAB Runtime](http://www.m
 
 If you are cloning the git repository, don't forget to [initialize and update the submodules](https://git-scm.com/book/en/v2/Git-Tools-Submodules). 
 
-Additional Material
+Training Scores
+------------------------------------------------------------------
+The training scores can be downloaded from the (makam-symbolic-phrase-segmentation-dataset)[https://github.com/MTG/makam-symbolic-phrase-segmentation-dataset/releases/tag/v1.0] repository. The latest release has some minor changes from the original training score dataset such as UTF-8 encoding and duplicate file removal.
+
+The original training scores can be also downloaded from (Barış Bozkurt's project site)[http://akademik.bahcesehir.edu.tr/~bbozkurt/112E162.html].
+
+Additional Code
 ------------------------------------------------------------------
 This tool uses [MIDI Toolbox](https://www.jyu.fi/hum/laitokset/musiikki/en/research/coe/materials/miditoolbox) internally for computing the features using LBDM and Tenney-Polansky algoritms. 
 
 For json reading/writing, the code uses Sertan Şentürk's [jsonlab](https://github.com/sertansenturk/jsonlab) fork. 
 
-Contributors
+Known Issues
+------------------------------------------------------------------
+This version 
+
+AUTHORS
 ------------------------------------------------------------------
 Maintainer:
 - Sertan Şentürk (contact AT sertansenturk DOT com)
