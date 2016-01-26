@@ -19,7 +19,7 @@ phraseSeg('trainWrapper', trainJson, boundStatFile, FLDmodelFile)
 testSegmentFolder = fullfile(outFolder, 'testSegment');
 
 testJson = 'sampleData/testFile.json';
-testSegmentFile = fullfile(testSegmentFolder, 'hicaz--sarki--aksak--beni_canimdan--muzaffer_ilkar.autoSeg');
+testSegmentFile = fullfile(testSegmentFolder, 'hicaz--sarki--aksak--dil_yaresini--sevki_bey.autoSeg');
 
 %% segmentation
 phraseSeg('segmentWrapper', boundStatFile, FLDmodelFile, testJson, ...
