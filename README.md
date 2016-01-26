@@ -42,7 +42,7 @@ For json reading/writing, the code uses Sertan Şentürk's [jsonlab](https://git
 
 Known Issues
 ------------------------------------------------------------------
-The current release outputs slightly different results compared to Barış Bozkurt's original code (i.e. minor boundary insertions and deletions). We will release the first stable release when this [issue](#1) is fixed.
+The current release outputs slightly different results compared to Barış Bozkurt's original code (i.e. minor boundary insertions and deletions). We will release the first stable release, as soon as this [issue](https://github.com/MTG/makam-symbolic-phrase-segmentation/issues/8) is fixed.
 
 AUTHORS
 ------------------------------------------------------------------
