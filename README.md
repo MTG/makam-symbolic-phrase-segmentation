@@ -8,7 +8,7 @@ Introduction
 This repository provides the implementation of makam and usul driven automatic phrase
 segmentation method proposed in:
 
-Barış Bozkurt, M. Kemal Karaosmanoğlu, Bilge Karaçalı, Erdem Ünal. Usul and Makam driven automatic melodic segmentation for Turkish music. Journal of New Music Research. Vol. 43, Iss. 4, 2014
+> Barış Bozkurt, M. Kemal Karaosmanoğlu, Bilge Karaçalı, Erdem Ünal. Usul and Makam driven automatic melodic segmentation for Turkish music. Journal of New Music Research. Vol. 43, Iss. 4, 2014
 
 Please cite the paper, if you are using the code or the data available in the web page explained below.
 
