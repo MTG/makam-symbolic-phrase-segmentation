@@ -30,11 +30,11 @@ Usage
 ------------------------------------------------------------------
 **Note:** If you want to get the automatic phrase boundaries using a pre-trained model, we recommend you to use the automatic phrase segmentation in [tomato](https://github.com/sertansenturk/tomato) for it's simpler usage. If not, please proceed below...
 
-You can use the tool either from the MATLAB itself, or by calling the MATLAB binaries provided. Refer to the [phraseSeg_matlab_demo.m](https://github.com/MTG/makam-symbolic-phrase-segmentation/blob/master/phraseSeg_matlab_demo.m) and [phraseSeg_mcr_demo.sh](https://github.com/MTG/makam-symbolic-phrase-segmentation/blob/master/phraseSeg_mcr_demo.sh), respectively, for how to call the code. 
+You can use the tool either from the MATLAB itself, or by calling the MATLAB binaries provided. Refer to the [phraseSeg_matlab_demo.m](https://github.com/MTG/makam-symbolic-phrase-segmentation/blob/master/phraseSeg_matlab_demo.m) for calling the code from MATLAB. For the binaries there are two demos: [phraseSeg_mcr_linux_demo.sh](https://github.com/MTG/makam-symbolic-phrase-segmentation/blob/master/phraseSeg_mcr_linux_demo.sh) for linux and [phraseSeg_mcr_mac_demo.sh](https://github.com/MTG/makam-symbolic-phrase-segmentation/blob/master/phraseSeg_mcr_mac_demo.sh).
 
-For the **phraseSeg_mcr_demo.sh**, make sure that the path of the binary downloaded from the release is correctly entered, you have execution permission and the enviroment paths for the MCR are exported correctly:
+For the **mcr_demo.sh**, make sure that the path of the binary downloaded from the release is correctly entered, you have execution permission and the enviroment paths for the MCR are exported correctly:
 
-- In Linux, you simply have to call the binary as "phraseSeg". In MacOSX, the executable is in "phraseSeg.app/Contents/MacOS/phraseSeg"
+- The default paths of the binaries in the mcr demos point to the repository's base folder. If you have downloaded the binaries from the release to another location, you have to modify the paths of the binaries manually. Note that you simply have to call the binary as "phraseSeg" in Linux. On the other hand, the executable is in "phraseSeg.app/Contents/MacOS/phraseSeg" in Mac OS X.
 - The environment path to set are given in the end of the MCR installation. You can assign the path in [run_mcr.sh](https://github.com/MTG/makam-symbolic-phrase-segmentation/blob/master/run_mcr.sh) and call to binary from via this wrapper script for convenience. The path to set in Linux and in MacOSX is "LD_LIBRARY_PATH" and "DYLD_LIBRARY_PATH", respectively.
 - You have to call "chmod +x /path/to/phraseSeg" to make the binary executable.
 
