@@ -1,4 +1,4 @@
-function [boundary, boundary_noteIdx] = autoMelodicSegmentation(...
+function [boundary, boundary_note_idx] = autoMelodicSegmentation(...
     featureIn, FLDmodel)
 %Performs automatic melodic segmentation using the FLDmodel
 % Inputs: 
@@ -17,4 +17,4 @@ piecedata.data = piecedata.data(:, 2:end);
 Ypred=applyFLDmodel(piecedata,FLDmodel);
 
 boundary = idx(Ypred,2);
-boundary_noteIdx = idx(Ypred,1);
+boundary_note_idx = idx(Ypred,1);
