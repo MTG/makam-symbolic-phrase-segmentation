@@ -30,7 +30,7 @@ Usage
 ------------------------------------------------------------------
 **Note:** If you want to get the automatic phrase boundaries using a pre-trained model, we recommend you to use the automatic phrase segmentation in [tomato](https://github.com/sertansenturk/tomato) for it's simpler usage. If not, please proceed below...
 
-You can use the tool either from the MATLAB itself, or by calling the MATLAB binaries provided. Refer to the [phraseSeg_matlab_demo.m](https://github.com/MTG/makam-symbolic-phrase-segmentation/blob/master/phraseSeg_matlab_demo.m) for calling the code from MATLAB. For the binaries there are two demos: [phraseSeg_mcr_linux_demo.sh](https://github.com/MTG/makam-symbolic-phrase-segmentation/blob/master/phraseSeg_mcr_linux_demo.sh) for linux and [phraseSeg_mcr_mac_demo.sh](https://github.com/MTG/makam-symbolic-phrase-segmentation/blob/master/phraseSeg_mcr_mac_demo.sh).
+You can use the tool either from the MATLAB itself, or by calling the MATLAB binaries provided. Refer to the [phraseSeg_matlab_demo.m](https://github.com/MTG/makam-symbolic-phrase-segmentation/blob/master/phraseSeg_matlab_demo.m) for calling the code from MATLAB. For the binaries there are two demos: [phraseSeg_mcr_linux_demo.sh](https://github.com/MTG/makam-symbolic-phrase-segmentation/blob/master/phraseSeg_mcr_linux_demo.sh) for linux and [phraseSeg_mcr_mac_demo.sh](https://github.com/MTG/makam-symbolic-phrase-segmentation/blob/master/phraseSeg_mcr_mac_demo.sh) for Mac OS X.
 
 For the **mcr_demo.sh**, make sure that the path of the binary downloaded from the release is correctly entered, you have execution permission and the enviroment paths for the MCR are exported correctly:
 
