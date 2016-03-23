@@ -1,12 +1,12 @@
 <deployment-project plugin="plugin.ezdeploy" plugin-version="1.0">
-  <configuration build-checksum="1255589444" file="/Users/sertansenturk_mtg/Documents/notaIcra/code/makam-symbolic-phrase-segmentation/phraseSeg.prj" location="/Users/sertansenturk_mtg/Documents/notaIcra/code/makam-symbolic-phrase-segmentation" name="phraseSeg" preferred-package-location="/Users/sertansenturk_mtg/Documents/notaIcra/code/makam-symbolic-phrase-segmentation/phraseSegPkg/for_redistribution" preferred-package-type="package.type.app" target="target.ezdeploy.standalone" target-name="Application Compiler">
+  <configuration build-checksum="2395153724" file="/home/sertansenturk/Documents/notaIcra/code/makam-symbolic-phrase-segmentation/phraseSeg.prj" location="/home/sertansenturk/Documents/notaIcra/code/makam-symbolic-phrase-segmentation" name="phraseSeg" preferred-package-location="/home/sertansenturk/Documents/notaIcra/code/makam-symbolic-phrase-segmentation/phraseSegPkg/for_redistribution" preferred-package-type="package.type.install" target="target.ezdeploy.standalone" target-name="Application Compiler">
     <param.appname>phraseSeg</param.appname>
     <param.icon />
     <param.icons />
     <param.version>1.0</param.version>
     <param.authnamewatermark>Bozkurt et al.</param.authnamewatermark>
     <param.email>sertan.senturk@upf.edu</param.email>
-    <param.company>Universitat Pompeu Fabra</param.company>
+    <param.company>Music Technology Group, UPF</param.company>
     <param.summary>Automatic Phrase Segmentation on symbolic scores for Ottoman-Turkish makam music</param.summary>
     <param.description>Introduction
 ----------
@@ -75,8 +75,8 @@ The original work is supported by the Scientific and Technological Research Coun
     <param.screenshot />
     <param.guid />
     <param.net.saved.interface />
-    <param.installpath.string>/Universitat_Pompeu_Fabra/phraseSeg/</param.installpath.string>
-    <param.installpath.combo>option.installpath.systemwideapp</param.installpath.combo>
+    <param.installpath.string>/MTG/phraseSeg/</param.installpath.string>
+    <param.installpath.combo>option.installpath.user</param.installpath.combo>
     <param.logo />
     <param.install.notes />
     <param.intermediate>${PROJECT_ROOT}/phraseSegPkg/for_testing</param.intermediate>
@@ -108,7 +108,6 @@ The original work is supported by the Scientific and Technological Research Coun
       <param.screenshot />
       <param.guid />
       <param.net.saved.interface />
-      <param.installpath.string />
       <param.installpath.combo />
       <param.logo />
       <param.enable.clean.build />
@@ -141,29 +140,29 @@ The original work is supported by the Scientific and Technological Research Coun
     </fileset.resources>
     <fileset.package />
     <build-deliverables>
-      <file location="${PROJECT_ROOT}/phraseSegPkg/for_testing" name="readme.txt" optional="true">/Users/sertansenturk_mtg/Documents/notaIcra/code/makam-symbolic-phrase-segmentation/phraseSegPkg/for_testing/readme.txt</file>
-      <file location="${PROJECT_ROOT}/phraseSegPkg/for_testing" name="run_phraseSeg.sh" optional="false">/Users/sertansenturk_mtg/Documents/notaIcra/code/makam-symbolic-phrase-segmentation/phraseSegPkg/for_testing/run_phraseSeg.sh</file>
-      <file location="${PROJECT_ROOT}/phraseSegPkg/for_testing" name="phraseSeg.app" optional="false">/Users/sertansenturk_mtg/Documents/notaIcra/code/makam-symbolic-phrase-segmentation/phraseSegPkg/for_testing/phraseSeg.app</file>
-      <file location="${PROJECT_ROOT}/phraseSegPkg/for_testing" name="splash.png" optional="false">/Users/sertansenturk_mtg/Documents/notaIcra/code/makam-symbolic-phrase-segmentation/phraseSegPkg/for_testing/splash.png</file>
+      <file location="${PROJECT_ROOT}/phraseSegPkg/for_testing" name="phraseSeg" optional="false">/home/sertansenturk/Documents/notaIcra/code/makam-symbolic-phrase-segmentation/phraseSegPkg/for_testing/phraseSeg</file>
+      <file location="${PROJECT_ROOT}/phraseSegPkg/for_testing" name="readme.txt" optional="true">/home/sertansenturk/Documents/notaIcra/code/makam-symbolic-phrase-segmentation/phraseSegPkg/for_testing/readme.txt</file>
+      <file location="${PROJECT_ROOT}/phraseSegPkg/for_testing" name="run_phraseSeg.sh" optional="false">/home/sertansenturk/Documents/notaIcra/code/makam-symbolic-phrase-segmentation/phraseSegPkg/for_testing/run_phraseSeg.sh</file>
+      <file location="${PROJECT_ROOT}/phraseSegPkg/for_testing" name="splash.png" optional="false">/home/sertansenturk/Documents/notaIcra/code/makam-symbolic-phrase-segmentation/phraseSegPkg/for_testing/splash.png</file>
     </build-deliverables>
     <workflow />
     <matlab>
-      <root>/Applications/MATLAB_R2015a.app</root>
+      <root>/usr/local/MATLAB/R2015a</root>
       <toolboxes />
     </matlab>
     <platform>
       <unix>true</unix>
-      <mac>true</mac>
+      <mac>false</mac>
       <windows>false</windows>
       <win2k>false</win2k>
       <winxp>false</winxp>
       <vista>false</vista>
-      <linux>false</linux>
+      <linux>true</linux>
       <solaris>false</solaris>
-      <osver>10.10.5</osver>
+      <osver>3.19.0-51-generic</osver>
       <os32>false</os32>
       <os64>true</os64>
-      <arch>maci64</arch>
+      <arch>glnxa64</arch>
       <matlab>true</matlab>
     </platform>
   </configuration>

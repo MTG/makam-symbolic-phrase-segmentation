@@ -10,3 +10,7 @@ sampleData/tmp/
 
 # matlab compiler
 phraseSegPkg
+
+# binaries
+phraseSeg
+phraseSeg.app
