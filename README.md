@@ -16,9 +16,15 @@ This is a fork of the automatic phrase segmentation algorithm hosted in http://a
 
 This repository is created with the consent of the members of the project. The aim of this fork is to modularize and package the MATLAB code into a standalone binary usable in other research tools (such as [Dunya](https://github.com/MTG/dunya)). The code is also optimized such that it performs considerably faster than the original code. 
 
+Binaries 
+------------------------------------------------------------------
+The compiled binaries for Linux and MacOSX are hosted inside the [releases](https://github.com/MTG/makam-symbolic-phrase-segmentation/releases). The binary for Linux is named "phraseSeg" and the binary for MacOSX is named "phraseSeg.app" zipped under "phraseSeg_mac.zip".
+
 Usage 
 ------------------------------------------------------------------
-You can use the tool either from the MATLAB itself, or by calling the MATLAB binaries provided. Refer to the [phraseSeg_matlab_demo.m](https://github.com/MTG/makam-symbolic-phrase-segmentation/blob/master/phraseSeg_matlab_demo.m) and [phraseSeg_mcr_demo.sh](https://github.com/MTG/makam-symbolic-phrase-segmentation/blob/master/phraseSeg_mcr_demo.sh), respectively, for how to call the code.
+You can use the tool either from the MATLAB itself, or by calling the MATLAB binaries provided. Refer to the [phraseSeg_matlab_demo.m](https://github.com/MTG/makam-symbolic-phrase-segmentation/blob/master/phraseSeg_matlab_demo.m) and [phraseSeg_mcr_demo.sh](https://github.com/MTG/makam-symbolic-phrase-segmentation/blob/master/phraseSeg_mcr_demo.sh), respectively, for how to call the code. 
+
+For the **phraseSeg_mcr_demo.sh**, make sure that the path of the binary downloaded from the release is correctly entered.
 
 If you want to work on/observe how each individual step is called refer to [individual_functions_demo.m](https://github.com/MTG/makam-symbolic-phrase-segmentation/blob/master/individual_functions_demo.m).
 
