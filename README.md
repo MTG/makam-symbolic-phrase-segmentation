@@ -18,9 +18,9 @@ This repository is created with the consent of the members of the project. The a
 
 Usage 
 ------------------------------------------------------------------
-You can use the tool either from the MATLAB itself, or by calling the MATLAB binaries provided. Refer to the phraseSeg_matlab_demo.m and phraseSeg_mcr_demo.sh, respectively, for how to call the code.
+You can use the tool either from the MATLAB itself, or by calling the MATLAB binaries provided. Refer to the [phraseSeg_matlab_demo.m](https://github.com/MTG/makam-symbolic-phrase-segmentation/blob/master/phraseSeg_matlab_demo.m) and [phraseSeg_mcr_demo.sh](https://github.com/MTG/makam-symbolic-phrase-segmentation/blob/master/phraseSeg_mcr_demo.sh), respectively, for how to call the code.
 
-If you want to work on/observe how each individual step is called refer to individual_functions_demo.m.
+If you want to work on/observe how each individual step is called refer to [individual_functions_demo.m](https://github.com/MTG/makam-symbolic-phrase-segmentation/blob/master/individual_functions_demo.m).
 
 Installation
 ------------------------------------------------------------------
