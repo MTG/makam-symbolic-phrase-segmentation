@@ -24,7 +24,9 @@ Installation
 ------------------------------------------------------------------
 If you want to use the binary, you need to install [MATLAB Runtime](http://www.mathworks.com/products/compiler/mcr/?refresh=true). Make you download and install the version R2015a (Links for [Linux](http://www.mathworks.com/supportfiles/downloads/R2015a/deployment_files/R2015a/installers/glnxa64/MCR_R2015a_glnxa64_installer.zip) and [Mac OSX](http://www.mathworks.com/supportfiles/downloads/R2015a/deployment_files/R2015a/installers/maci64/MCR_R2015a_maci64_installer.zip)). The binary will not work with other runtime versions!
 
-If you are cloning the git repository, don't forget to [initialize and update the submodules](https://git-scm.com/book/en/v2/Git-Tools-Submodules). 
+If you are cloning the git repository, don't forget to [initialize and update the submodules](https://git-scm.com/book/en/v2/Git-Tools-Submodules). If you have downloaded the source code, don't forget to download the submodules too!
+
+You can also install the binaries using the installation package given in the releases. Simply run the install included in the package and follow the instructions.
 
 Usage 
 ------------------------------------------------------------------
