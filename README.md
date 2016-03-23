@@ -28,7 +28,7 @@ If you are cloning the git repository, don't forget to [initialize and update th
 
 Usage 
 ------------------------------------------------------------------
-** Note: ** If you want to get the automatic phrase boundaries using a pre-trained model, we recommend you to use the automatic phrase segmentation in [tomato](https://github.com/sertansenturk/tomato) for it's simpler usage. If not, please proceed to below...
+**Note:** If you want to get the automatic phrase boundaries using a pre-trained model, we recommend you to use the automatic phrase segmentation in [tomato](https://github.com/sertansenturk/tomato) for it's simpler usage. If not, please proceed below...
 
 You can use the tool either from the MATLAB itself, or by calling the MATLAB binaries provided. Refer to the [phraseSeg_matlab_demo.m](https://github.com/MTG/makam-symbolic-phrase-segmentation/blob/master/phraseSeg_matlab_demo.m) and [phraseSeg_mcr_demo.sh](https://github.com/MTG/makam-symbolic-phrase-segmentation/blob/master/phraseSeg_mcr_demo.sh), respectively, for how to call the code. 
 
