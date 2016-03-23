@@ -69,4 +69,4 @@ Original code:
 
 Acknowledgements
 ------------------------------------------------------------------
-The original work is supported by the Scientific and Technological Research Council of Turkey, TÜBITAK, Grant [112E162]. This fork was created within the work partly supported by the European Research Council under the European Union’s Seventh Framework Program, as part of the CompMusic project (ERC grant agreement 267583).
+The original work is supported by the Scientific and Technological Research Council of Turkey, TÜBİTAK, Grant [112E162]. This fork was created within the work partly supported by the European Research Council under the European Union’s Seventh Framework Program, as part of the CompMusic project (ERC grant agreement 267583).
