@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/27432980.svg)](https://zenodo.org/badge/latestdoi/27432980)
+
 makam-symbolic-phrase-segmentation
 ==================================
 
