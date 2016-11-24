@@ -17,7 +17,7 @@ You can access the original code and additional sources such as the expert annot
 
 Known Issues
 ------------------------------------------------------------------
-The current release outputs slightly different results compared to Barış Bozkurt's original code (i.e. minor boundary insertions and deletions). We will release the first stable release, as soon as this [issue](https://github.com/MTG/makam-symbolic-phrase-segmentation/issues/8) is fixed.
+The current release outputs somewhat different results compared to Barış Bozkurt's original code (i.e. several boundary insertions and deletions). We will release the first stable release, as soon as this [issue](https://github.com/MTG/makam-symbolic-phrase-segmentation/issues/8) is fixed.
 
 Binaries 
 ------------------------------------------------------------------
