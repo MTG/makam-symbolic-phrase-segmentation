@@ -1,4 +1,4 @@
-[![DOI](https://zenodo.org/badge/27432980.svg)](https://zenodo.org/badge/latestdoi/27432980)
+[![DOI](https://zenodo.org/badge/27432980.svg)](https://zenodo.org/badge/latestdoi/27432980) [![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-ff69b4.svg)](http://www.gnu.org/licenses/agpl-3.0)
 
 makam-symbolic-phrase-segmentation
 ==================================
